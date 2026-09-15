@@ -1,0 +1,12 @@
+# Environment
+.env
+.env.*
+!.env.dev
+!.env.www2.template
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

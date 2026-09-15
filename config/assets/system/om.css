@@ -1,0 +1,1040 @@
+/** Bilder in der Datei csi_icons sind alle untereinander angeordnet und beginnen jeweils alle 75px */
+body {
+  font-family: "Trebuchet MS", Arial, Helvetica;
+  font-size: 13px;
+  color: #003333;
+  background-color: #F4F4F4;
+  margin: 0px;
+  background-image: url("/system/img/bg_verlauf.gif");
+  background-position: 0px bottom;
+  background-repeat: repeat-x;
+  background-attachment: fixed;
+}
+a, span.alike {
+  color: #339999;
+  text-decoration: none;
+}
+a:visited {
+  color: #339999;
+}
+a:hover, span.alike:hover {
+  color: #00cccc;
+}
+a img {
+  border: none;
+}
+span.alike {
+  cursor: pointer;
+}
+ol, ul {
+  list-style: none outside none;
+}
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+}
+.clear {
+  clear: both;
+}
+#page-wrapper {
+  width: 1024px;
+  margin: 0px auto;
+  background-color: #FFFFFF;
+}
+/** HEADER **/
+#header {
+  background-image: url("/system/img/muster.gif");
+  position: relative;
+  height: 133px;
+}
+#iqb-logo {
+  position: absolute;
+  left: 42px;
+  top: 10px;
+}
+a#hu-logo {
+  position: absolute;
+  left: 902px;
+  top: 18px;
+  background-image: url("/system/img/HU_Logo.gif");
+  background-position: -92px 0;
+  overflow: hidden;
+  text-indent: -9999px;
+  height: 92px;
+  width: 92px;
+}
+#service-menu-wrapper {
+  position: absolute;
+  left: 550px;
+  top: 30px;
+  width: 313px;
+}
+#service-menu-wrapper li {
+  position: relative;
+  display: block;
+  margin-bottom: 5px;
+  padding: 0px;
+  height: 23px;
+  text-align: right;
+}
+#service-menu-wrapper li a.username {
+  padding: 5px 10px 0px 0px;
+  display: inline-block;
+  overflow: hidden;
+  height: 19px;
+  color: #339999;
+  text-decoration: none;
+}
+#service-menu-wrapper li a.servicemenulink {
+  background-image: url("/system/img/csi_icons.png");
+  background-position: right -1500px;
+  background-repeat: no-repeat;
+  padding: 5px 33px 0px 0px;
+  display: inline-block;
+  overflow: hidden;
+  height: 19px;
+  color: #666666;
+  text-decoration: none;
+  font-style: italic;
+}
+#service-menu-wrapper li a:hover {
+  background-position: right -1575px;
+}
+#service-menu-wrapper li a.language_disabled {
+  background-position: right -1650px;
+  color: #BBBBBB;
+  pointer-events: none;
+  cursor: default;
+}
+#service-menu-wrapper li a.language {
+  background-position: right -1650px;
+}
+#service-menu-wrapper li a.language:hover {
+  background-position: right -1725px;
+}
+#service-menu-wrapper li a.login {
+  background-position: right -1200px;
+}
+#service-menu-wrapper li a.login:hover {
+  background-position: right -1275px;
+}
+#service-menu-wrapper li a.logout {
+  background-position: right -1350px;
+}
+#service-menu-wrapper li a.logout:hover {
+  background-position: right -1425px;
+}
+#service-menu-wrapper li .overlay {
+  display: none;
+  position: absolute;
+  left: 4px;
+  top: -4px;
+  height: 33px;
+  width: 313px;
+  background-image: url("/system/img/icon_sprite_01.png");
+  background-position: -47px 0px;
+  background-repeat: no-repeat;
+}
+#service-menu-wrapper li .overlay .content {
+  display: block;
+  float: left;
+  text-align: left;
+  width: 266px;
+  padding: 0px 0px 0px 14px;
+  font-size: 12px;
+}
+#service-menu-wrapper li .overlay .content span.label {
+  display: inline-block;
+  color: #666;
+  text-decoration: none;
+  font-style: italic;
+  margin: 7px 6px 7px 0px;
+}
+#service-menu-wrapper li .overlay .content input {
+  font-family: "Trebuchet MS", Arial, Helvetica;
+  font-size: 12px;
+  margin: 5px 0px;
+  margin-right: 2px;
+  height: 18px;
+  border: 1px solid #e5e6dd;
+  background-color: #F2F2F2;
+}
+#service-menu-wrapper li .overlay.search .content input {
+  width: 168px;
+}
+#service-menu-wrapper li .overlay.login .content input {
+  width: 90px;
+}
+#service-menu-wrapper li .overlay.login .content input.submit, #service-menu-wrapper li .overlay.search .content input.submit {
+  cursor: pointer;
+  width: 23px;
+  height: 23px;
+  border: none;
+  text-indent: 9999px ;
+  background-color: white;
+  background-image: url("/system/img/csi_icons.png");
+  background-position: 0px -1500px;
+  background-repeat: no-repeat;
+}
+#service-menu-wrapper li .overlay.login .content input.submit {
+  background-position: 0px -1200px;
+}
+#service-menu-wrapper li .overlay.login .content input.submit:hover {
+  background-position: 0px -1275px;
+}
+#service-menu-wrapper li .overlay.search .content input.submit:hover {
+  background-position: 0px -1575px;
+}
+#service-menu-wrapper li .overlay.language .content span.label {
+  width: 56px;
+  float: left;
+}
+#service-menu-wrapper li .overlay.language .content ul {
+  overflow: hidden;
+  height: 27px;
+  float: left;
+  width: 200px;
+  margin-top: 5px;
+  background-image: url("/system/img/dienstnavi_trenner.gif");
+  background-position: left 0px;
+  background-repeat: no-repeat;
+}
+#service-menu-wrapper li .overlay.language .content ul li {
+  display: block;
+  float: left;
+  background-image: url("/system/img/dienstnavi_trenner.gif");
+  background-position: right 0px;
+  background-repeat: no-repeat;
+  height: 25px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  padding: 2px 10px;
+}
+#service-menu-wrapper li .overlay.language .content ul li a {
+  color: #c5c5c3;
+}
+#service-menu-wrapper li .overlay.language .content ul li a:hover {
+  color: #00cccc;
+}
+#service-menu-wrapper li .overlay.language .content ul li.active a {
+  color: #a61b25;
+  background-image: url("/system/img/csi_icons.png");
+  background-position: 0px -672px;
+  background-repeat: no-repeat;
+  padding-left: 10px;
+}
+#nav ul li:hover {
+  background-position: 0px -275px;
+}
+#service-menu-wrapper li .overlay .close {
+  margin: 4px 6px 6px 0px;
+  overflow: hidden;
+  text-indent: 9999px;
+  display: block;
+  float: right;
+  width: 23px;
+  height: 23px;
+  background-image: url("/system/img/csi_icons.png");
+  background-position: 0px -1800px;
+  background-repeat: no-repeat;
+}
+#service-menu-wrapper li .overlay .close:hover {
+  background-position: 0px -1875px;
+}
+/** END HEADER **/
+/** NAVIGATION BAR **/
+#nav {
+  background-color: transparent;
+  background-image: url("/system/img/nav_background.png");
+  background-position: 0 0;
+  background-repeat: repeat-x;
+  overflow: hidden;
+  height: 42px;
+  margin-top: -4px;
+  position: relative;
+}
+#nav.nav-portal {
+  /* ALT: border-bottom: 5px solid #001615;
+  NEU: double border box-shadow trick: http://www.impressivewebs.com/multiple-borders-css/
+  */
+  box-shadow: 0 1px 0 0 white, 0 3px 0 0 #FC6624;
+  -moz-box-shadow: 0 1px 0 0 white, 0 2px 0 0 #FC6624;
+  -webkit-box-shadow: 0 1px 0 0 white, 0 2px 0 0 #FC6624;
+}
+#nav ul {
+  overflow: hidden;
+  height: 42px;
+}
+#nav ul li {
+  display: block;
+  float: left;
+  background-image: url("/system/img/icon_sprite_01.png");
+  background-position: 0px -175px;
+  background-repeat: no-repeat;
+  height: 42px;
+  margin-right: 5px;
+}
+#nav ul li:hover {
+  background-position: 0px -275px;
+}
+#nav ul li.current {
+  background-position: 0px -225px;
+}
+#nav ul li a {
+  display: block;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: normal;
+  letter-spacing: 0.05em;
+  height: 30px;
+  padding: 12px 17px 0px 19px;
+  text-decoration: none;
+  background-image: url("/system/img/nav_sprite_right.png");
+  background-position: right 0px;
+  background-repeat: no-repeat;
+  margin-right: -5px;
+}
+#nav ul li:hover a {
+  background-position: right -100px;
+}
+#nav ul li.current a {
+  background-position: right -50px;
+}
+#nav a #nav_homepage {
+  display: block;
+  /* position fix */
+  position: relative;
+  left: -2px;
+  
+  width: 11px;
+  height: 20px;
+  text-indent: -9999px;
+  background-image: url("/system/img/icon_sprite_01.png");
+  background-position: -14px -11px;
+  background-repeat: no-repeat;
+}
+#nav a #nav_preview {
+  display: block;
+  /* position fix */
+  position: relative;
+  left: -2px;
+
+  width: 36px;
+  height: 26px;
+  text-indent: -9999px;
+  background-image: url("/system/img/eye.png");
+  background-position: 0 -7px;
+  background-repeat: no-repeat;
+}
+
+/**  + SUBNAVIGATION **/
+ul.subnavi > li {
+  padding: 8px 0px 0px 0px;
+}
+ul.subnavi.lvl1 > li {
+  padding: 6px 0px 6px 0px;
+}
+/** SUBNAVI BORDER IF OPEN */
+ul.subnavi.lvl1 > li.open {
+  padding-bottom: 0px;
+}
+ul.subnavi.lvl1 > li.open {
+  padding-top: 8px;
+  /** 6+2 da border als hintergrundbild */
+
+  background-image: url("/system/img/subnav_dots.gif");
+  background-repeat: no-repeat;
+}
+ul.subnavi.lvl1 > li.open > ul {
+  background-image: url("/system/img/subnav_dots.gif");
+  background-position: 0px bottom;
+  background-repeat: no-repeat;
+  padding: 0px 0px 8px 0px;
+  /** 6+2 da border als hintergrundbild */
+
+}
+/** SUBNAVI DEFAULT */
+ul.subnavi a, ul.subnavi span.alike {
+  display: inline-block;
+  background-image: url("/system/img/csi_icons.png");
+  background-repeat: no-repeat;
+  font-weight: normal;
+  text-decoration: none;
+}
+ul.subnavi a:hover, ul.subnavi > li.active > a, ul.subnavi span.alike:hover, ul.subnavi > li.active > span.alike {
+  color: #a61b25;
+}
+/** SUBNAVI LEVEL 3 */
+ul.subnavi > li > a, ul.subnavi > li > span.alike {
+  min-height: 12px;
+  padding: 0px 0px 0px 51px;
+  font-size: 12px;
+  background-position: 36px -598px;
+  color: #488C8A;
+}
+ul.subnavi > li > a:hover, ul.subnavi > li.active > a {
+  background-position: 36px -673px;
+}
+ul.subnavi > li.open > a {
+  background-position: 36px -448px;
+}
+ul.subnavi > li.open > a:hover, ul.subnavi > li.open.active > a {
+  background-position: 36px -523px;
+}
+/** SUBNAVI LEVEL 1 */
+ul.subnavi.lvl1 > li > a, ul.subnavi.lvl1 > li > span.alike {
+  background-position: 12px -75px;
+  min-height: 16px;
+  padding: 0px 0px 0px 36px;
+  font-size: 14px;
+  color: #336666;
+}
+ul.subnavi.lvl1 > li > a:hover, ul.subnavi.lvl1 > li.active > a, ul.subnavi.lvl1 > li > span.alike:hover, ul.subnavi.lvl1 > li.active > span.alike {
+  background-position: 12px 0px;
+  color: #a61b25;
+}
+ul.subnavi.lvl1 > li.open > a {
+  background-position: 12px -225px;
+}
+ul.subnavi.lvl1 > li.open > a:hover, ul.subnavi.lvl1 > li.open.active > a {
+  background-position: 12px -150px;
+  color: #a61b25;
+}
+/** LEVEL 2 */
+ul.subnavi.lvl2 > li > a {
+  background-position: 17px -598px;
+  padding: 0px 0px 0px 36px;
+}
+ul.subnavi.lvl2 > li > a:hover, ul.subnavi.lvl2 > li.active > a {
+  background-position: 17px -673px;
+}
+ul.subnavi.lvl2 > li.open > a {
+  background-position: 17px -448px;
+}
+ul.subnavi.lvl2 > li.open > a:hover, ul.subnavi.lvl2 > li.open.active > a {
+  background-position: 17px -523px;
+}
+/** MOOD IMAGES **/
+/** MOOD IMAGES - BACKGROUND-DIV AND SLIDESHOW **/
+#moodbar {
+  position: relative;
+  height: 283px;
+}
+#moodbar .moodbar_bg {
+  position: absolute;
+  height: 240px;
+  top: 0px;
+  left: 0px;
+  background-color: #003333;
+  /* left border addon */
+  width: 1023px; /* -1px for left border */
+  border-left: 1px solid #336666;
+}
+#moodbar #slides {
+  position: absolute;
+  height: 283px;
+  width: 1024px;
+  overflow: hidden;
+  top: 0px;
+}
+/** MOOD IMAGES - SINGLE SLIDE **/#moodbar #slides .slide_container {
+  position: relative;
+  height: 283px;
+  width: 1024px;
+}
+#moodbar #slides .slide img {
+  position: absolute;
+  left: 68px;
+}
+#moodbar #slides .slide .caption {
+  position: absolute;
+  left: 540px;
+  top: 38px;
+  width: 420px;
+  height: 155px;
+  overflow: hidden;
+  color: white;
+  font-size: 22px;
+  font-weight: normal;
+}
+/** MOOD IMAGES - PAGINATION **/
+#moodbar #slides .pagination {
+  position: absolute;
+  z-index: 1000;
+  left: 540px;
+  top: 207px;
+}
+#moodbar #slides .pagination li {
+  display: block;
+  float: left;
+}
+#moodbar #slides .pagination li a {
+  display: block;
+  width: 19px;
+  height: 19px;
+  margin-right: 7px;
+  overflow: hidden;
+  text-indent: -9999px;
+  background-image: url("/system/img/csi_icons.png");
+  background-position: 0px -825px;
+}
+#moodbar #slides .pagination li a:hover {
+  background-position: 0px -750px;
+}
+#moodbar #slides .pagination li.current a {
+  background-position: 0px -750px;
+}
+#moodbar #slides .pagination li.next a {
+  background-position: 0px -900px;
+}
+#moodbar #slides .pagination li.next a:hover {
+  background-position: 0px -975px;
+}
+/** FOOTER **/
+#page-footer {
+  width: 1024px;
+  background-image: url("/system/img/footer_bg.gif");
+  background-repeat: repeat-y;
+  padding: 32px 0 26px 0;
+}
+#page-footer .footerpart {
+  float: left;
+  width: 233px;
+  padding: 0px 20px 0px 30px;
+  color: white;
+  font-size: 14px;
+  line-height: 19px;
+}
+#page-footer .footeraddresses {
+  float: left;
+  width: 849px;
+  background-image: url("/system/img/footer_dots.gif");
+  background-repeat: repeat-y;
+}
+#page-footer .footerpart strong {
+  display: block;
+  margin-bottom: 7px;
+  font-weight: bold;
+  color: #e8ebaf;
+  font-size: 20px;
+}
+#page-footer a {
+  font-weight: normal;
+  color: white;
+  text-decoration: none;
+}
+#page-footer .footermenu {
+  float: left;
+  width: 141px;
+  padding: 0px 17px;
+}
+#page-footer li a {
+  display: block;
+  height: 21px;
+  padding-left: 32px;
+  margin-bottom: 7px;
+  background-image: url("/system/img/csi_icons.png");
+  background-position: 0px -300px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  font-weight: normal;
+  color: #e8ebaf;
+  text-decoration: none;
+}
+#page-footer li a:hover {
+  color: #e8ebaf;
+  text-decoration: underline;
+}
+#page-footer p {
+  margin: 0px;
+}
+/** SPRUNGNAVIGATION **/
+#slideout {
+  position: fixed;
+  right: -244px;
+  bottom: 50px;
+  width: 286px;
+}
+#slideout.open {
+  right: 0px;
+}
+#slideout .opener {
+  position: absolute;
+  left: 16px;
+  top: 15px;
+  width: 26px;
+  height: 60px;
+  background-image: url("/system/img/icon_sprite_01.png");
+  background-position: 0px -50px;
+  background-repeat: no-repeat;
+}
+#slideout .opener:hover {
+  background-position: -50px -50px;
+}
+#slideout.open .opener {
+  background-position: -100px -50px;
+}
+#slideout.open .opener:hover {
+  background-position: -150px -50px;
+}
+#slideout .bottom {
+  height: 43px;
+  width: 286px;
+  background-image: url("/system/img/csi_sprungnavibg.png");
+  background-position: -572px top;
+  background-repeat: no-repeat;
+}
+#slideout .top {
+  background-image: url("/system/img/csi_sprungnavibg.png");
+  padding-top: 90px;
+  width: 286px;
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+}
+#slideout .content {
+  background-image: url("/system/img/sprungnavibg_middle.png");
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+  width: 210px;
+  padding: 0px 20px 0 56px;
+  margin-bottom: 0px;
+  margin-top: -55px;
+}
+#slideout .content .head {
+  color: #336666;
+  font-size: 16px;
+  width: 210px;
+  margin-top: 0px;
+  margin-bottom: 22px;
+}
+#slideout .content li {
+  background-image: url("/system/img/sprungnav_dots.gif");
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+}
+#slideout .content ul {
+  background-image: url("/system/img/sprungnav_dots.gif");
+  background-position: 0px bottom;
+  background-repeat: no-repeat;
+  width: 210px;
+  margin: 0px;
+}
+#slideout .content a {
+  display: inline-block;
+  font-size: 14px;
+  color: #fc6624;
+  text-decoration: none;
+  min-height: 12px;
+  padding: 7px 0px 7px 20px;
+  background-image: url("/system/img/csi_icons.png");
+  background-position: 4px -515px;
+  background-repeat: no-repeat;
+}
+#slideout .content a:hover {
+  color: #a61b25;
+}
+/** STARTSEITEN STRUKTUR **/
+.startseite #main {
+  background-image: url("/system/img/home_bg_dots.gif");
+  background-repeat: repeat-y;
+  margin: 0px 0px 40px 0;
+}
+#root-contentstatic {
+  float: left;
+  width: 312px;
+  margin: 0px 20px;
+  padding: 2px 20px 20px 20px;
+  background-color: #E3EADF;
+  -moz-box-shadow: 4px 4px 10px #888;
+  -webkit-box-shadow: 4px 4px 10px #888;
+  box-shadow: 4px 4px 10px #888;
+}
+#root-contentplus {
+  float: left;
+  width: 352px;
+  padding: 0px;
+  margin: 0px 20px;
+}
+#linkboxes {
+  float: left;
+  width: 200px;
+  margin: 0px 20px;
+}
+/** UNTERSEITEN STRUKTUR **/
+/** WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW **/
+.unterseite-mit-rand #main,
+.unterseite-ohne-rand #main,
+.portalseite-mit-subnav #main,
+.portalseite-ganzseitig #main {
+  padding: 40px 0px;
+}
+#subnavigation {
+  /* subnavi */
+
+  float: left;
+  width: 220px;
+  margin: 0px 20px 0px 0px;
+}
+
+.application-mit-rand #subnavigation,
+.application-ohne-rand #subnavigation {
+	padding-top: 40px;
+	overflow-y: auto;
+	height: calc(100% - 40px);
+}
+
+#maincontent {
+  float: left;
+  width: 504px;
+  margin: 0px 20px;
+}
+.application-mit-rand #linkboxes {
+	padding-top: 40px;
+	padding-right: 20px;
+	margin-right: 0;
+	overflow-y: auto;
+	height: calc(100% - 40px);
+}
+
+.application-ohne-rand #maincontent,
+.application-mit-rand #maincontent {
+	overflow-y: hidden;
+	height: 100%;
+	margin: 0;
+}
+
+.application-mit-rand #maincontent {
+  width: 544px;
+}
+
+.application-ohne-rand #maincontent {
+  width: 784px;
+}
+.application-ohne-rand iframe,
+.application-mit-rand iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  margin: 0;
+}
+
+
+
+/* Normale Unterseite ohne Randspalte */
+.unterseite-ohne-rand #maincontent {
+  width: 730px;
+}
+.unterseite-ohne-rand #main {
+  position: relative;
+}
+.unterseite-ohne-rand #linkboxes {
+  position: absolute;
+  right: 0px;
+}
+/* Portalseite mit Randspalte */
+.portalseite-mit-linkboxes #maincontent {
+  width: 720px;
+  margin-left: 40px;
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+/* Portalseite mit Subnavigation und ohne Randspalte */
+.portalseite-mit-subnav #maincontent {
+  width: 744px;
+}
+.portalseite-mit-subnav #main {
+  position: relative;
+}
+.portalseite-mit-subnav #linkboxes {
+  position: absolute;
+  right: 0px;
+}
+/* Portalseite ohne Subnavigation und Randspalte */
+.portalseite-ganzseitig #maincontent {
+  width: 984px;
+}
+.portalseite-ganzseitig #main {
+  position: relative;
+}
+.portalseite-ganzseitig #linkboxes {
+  position: absolute;
+  right: 0px;
+}
+.portalseite-ganzseitig #subnavigation {
+  display: none;
+}
+/* Das erste Element sollte sicht nicht über die Drucken-Button erstrecken */
+/* MME: gelöscht, weil ALLE erste Elemente auf die Breite gebracht werden
+.portalseite-ganzseitig #maincontent :first-child {
+  width: 744px;
+}
+*/
+
+/** INHALTE **/
+/** INHALTE: Standards **/
+#main {
+    font-size: 14px;
+}
+#maincontent {
+    line-height: 1.3;
+}
+h1 {
+  font-size: 22px;
+  color: #a61b25;
+  font-weight: normal;
+  margin-bottom: 14px;
+}
+h1 a {
+  background-image: url("/system/img/csi_icons.png");
+  background-position: right -371px;
+  background-repeat: no-repeat;
+  padding-right: 35px;
+  color: #a61b25;
+}
+h1 a:visited {
+  color: #a61b25;
+}
+h1 a:hover {
+  color: #00cccc;
+}
+h2 {
+  font-size: 18px;
+  color: #a61b25;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+h3 {
+  font-size: 15px;
+  color: #a61b25;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+h4 {
+  font-size: 14px;
+  color: #003333;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+p, ul, ol {
+  margin-bottom: 14px;
+}
+p:last-child, ul:last-child, ol:last-child {
+  margin-bottom: 0px;
+}
+#maincontent ul {
+  list-style: disc outside none;
+  margin-left: 25px;
+}
+#maincontent ul li {
+    padding: 3px 0 2px 5px;
+}
+#maincontent ul {
+    list-style: disc outside none;
+    margin-left: 25px;
+}
+#maincontent ul li {
+    padding: 3px 0 2px 5px;
+}
+#maincontent ul.pfeil {
+    list-style: none outside none;
+    margin-left: 0;
+}
+#maincontent ul.pfeil li {
+    background-image: url("/system/img/csi_icons.png");
+    background-position: 10px -1044px;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+}
+#maincontent ol {
+    list-style: decimal outside none;
+    margin-left: 25px;
+}
+#maincontent ol li {
+    padding: 3px 0 2px 5px;
+}
+.morelink {
+  padding-right: 30px;
+  background-image: url("/system/img/csi_icons.png");
+  background-position: right -1045px;
+  background-repeat: no-repeat;
+}
+.maillink {
+  display: inline-block;
+  padding-left: 23px;
+  background-image: url("/system/img/csi_icons.png");
+  background-position: left -2325px;
+  background-repeat: no-repeat;
+  min-height: 16px;
+}
+.maillink:hover {
+  background-position: left -2250px;
+}
+p.address {
+  margin-bottom: 5px;
+}
+p.address .label {
+  display: inline-block;
+  width: 100px;
+  font-style: italic;
+}
+/** INHALTE: TEASER */
+/* Teaser Rahmen 
+#linkboxes .teaser-wrapper .teaser-img{
+	border: 1px solid #aaa;
+}*/
+
+#linkboxes .teaser-wrapper {
+  width: 100%;
+  margin-bottom: 20px;
+}
+#linkboxes .teaser-wrapper a.save-pdf, #linkboxes .teaser-wrapper a.print {
+  background-image: url("/system/img/csi_icons.png");
+  background-position: left -1950px;
+  background-repeat: no-repeat;
+  height: 23px;
+  padding: 4px 0px 0px 0px;
+  padding-left: 30px;
+  display: inline-block;
+  float: left;
+  color: #666666;
+  font-size: 12px;
+  font-style: italic;
+}
+#linkboxes .teaser-wrapper a.print {
+  float: right;
+  background-position: left -2100px;
+}
+#linkboxes .teaser-wrapper a.save-pdf:hover {
+  background-position: left -2025px;
+}
+#linkboxes .teaser-wrapper a.print:hover {
+  background-position: left -2175px;
+}
+/** INHALTE: TEASER: verwandte Themen */
+#linkboxes .similar-topics .teaser-header {
+  font-size: 18px;
+  color: #336666;
+  margin-bottom: 8px;
+}
+#linkboxes .similar-topics ul {
+  background-image: url("/system/img/teaser_themen_dots.png");
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  background-color: #e8ebaf;
+}
+#linkboxes .similar-topics ul li {
+  padding: 7px 0px 5px 0px;
+  background-image: url("/system/img/teaser_themen_dots.png");
+  background-position: left top;
+  background-repeat: no-repeat;
+}
+#linkboxes .similar-topics ul li a {
+  display: block;
+  font-size: 14px;
+  background-image: url("/system/img/csi_icons.png");
+  background-repeat: no-repeat;
+  background-position: 12px -75px;
+  padding-left: 35px;
+  min-height: 16px;
+}
+/** INHALTE: TEASER: Kontakt */
+#linkboxes .kontakt-teaser {
+  background-color: #F4F4F4;
+  padding: 12px;
+  width: 176px;
+  font-size: 14px;
+}
+#linkboxes .kontakt-teaser .teaser-header {
+  font-size: 18px;
+  color: #a61b25;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+#linkboxes .kontakt-teaser .maillink {
+  display: block;
+}
+/** INHALTE: STARTSEITE */
+body.startseite #main {
+  line-height: 1.3;
+  letter-spacing: 0.3px;
+}
+.startseite #root-contentplus ul, .startseite #root-contentplus ol {
+  list-style: none outside none;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+}
+.startseite ul#events {
+  background-image: url("/system/img/line_dots_1_350px.gif");
+  background-position: 0px bottom;
+  background-repeat: no-repeat;
+  margin-bottom: 20px;
+  color: #336666;
+}
+.startseite ul#events li, .startseite ul#docs li {
+  background-image: url("/system/img/line_dots_2_350px.gif");
+  background-position: 0px bottom;
+  background-repeat: no-repeat;
+  padding: 14px 0px 16px 0px;
+}
+.startseite ul#docs li:first-child, .startseite ul#events li:first-child {
+  padding-top: 0px;
+}
+.startseite ul#events strong.termin-highlight {
+  display: inline-block;
+  background-color: #e8ebaf;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 2px 5px;
+}
+.startseite ul#events li:last-child {
+  background-image: none;
+}
+.startseite ul#events .morelink, .startseite ul#docs .morelink {
+  padding-right: 30px;
+  background-image: url("/system/img/csi_icons.png");
+  background-position: right -1045px;
+  background-repeat: no-repeat;
+  color: #339999;
+  display: inline-block;
+  margin-top: 8px;
+}
+.startseite ul#events .morelink:hover, .startseite ul#docs li:hover .morelink, .startseite ul#docs .morelink:hover {
+  color: #00cccc;
+}
+.startseite ul#docs li:hover .morelink {
+  color: #00cccc;
+}
+.startseite ul#docs li a {
+  display: inline-block;
+  padding-left: 25px;
+  background-image: url("/system/img/nav_icon_e2_right_off.png");
+  background-repeat: no-repeat;
+  color: #003333;
+}
+.startseite ul#docs li:hover a, .startseite ul#docs li a:hover {
+  color: #00cccc;
+}

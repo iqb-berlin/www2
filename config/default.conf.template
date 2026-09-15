@@ -1,0 +1,44 @@
+# Traefik terminates TLS and proxies to us over plain HTTP, so $scheme alone would
+# always say "http" even when the browser used https; trust X-Forwarded-Proto when
+# present (behind Traefik) and fall back to $scheme for direct access.
+map $http_x_forwarded_proto $asset_scheme {
+    default $http_x_forwarded_proto;
+    ''      $scheme;
+}
+
+server {
+    listen       8080;
+    server_name  localhost;
+
+    client_max_body_size 0;
+
+    #access_log  /var/log/nginx/host.access.log  main;
+
+    # landing-page.html references its CSS/JS/images as https://local-assets/...
+    # so they stay same-origin even though <base> points at the live domain;
+    # rewrite that placeholder to whatever host/scheme the request actually came in on.
+    sub_filter 'https://local-assets/' '$asset_scheme://$http_host/';
+    sub_filter_once off;
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  landing-page.html;
+    }
+
+    #error_page  404              /404.html;
+
+    # redirect server error pages to the static page /50x.html
+    #
+    #error_page   500 502 503 504  /50x.html;
+    #location = /50x.html {
+    #    root   /usr/share/nginx/html;
+    #}
+
+    # deny access to .htaccess files, if Apache's document root
+    # concurs with nginx's one
+    #
+    #location ~ /\.ht {
+    #    deny  all;
+    #}
+
+}

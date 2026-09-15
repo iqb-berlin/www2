@@ -1,0 +1,12 @@
+services:
+  landing-page:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.landing-page.entrypoints=websecure"
+      - "traefik.http.routers.landing-page.tls=true"
+      - "traefik.http.routers.landing-page.tls.certresolver=${TLS_CERTIFICATE_RESOLVER}"
+      - "traefik.http.routers.landing-page.rule=Host(`${SERVER_NAME}`)"
+      - "traefik.http.routers.landing-page.middlewares=security-headers"
+      - "traefik.http.routers.landing-page.service=landing-page"
+      - "traefik.http.services.landing-page.loadbalancer.server.port=8080"
+      - "traefik.docker.network=app-net"

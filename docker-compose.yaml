@@ -1,0 +1,14 @@
+services:
+  landing-page:
+    image: ${REGISTRY_PATH}nginxinc/nginx-unprivileged:stable
+    restart: always
+    volumes:
+      - "./config/default.conf.template:/etc/nginx/templates/default.conf.template:ro"
+      - "./config/assets:/usr/share/nginx/html:ro"
+    networks:
+      - application-network
+
+networks:
+  application-network:
+    name: app-net
+    external: true

@@ -1,0 +1,967 @@
+/*DEFAULTS*/
+.mobile{
+    display: none;
+    visibility: collapse;
+}
+/*//TEMP STAFF//*/
+.staff_container .heading{
+        background-color: #356666 !important;
+        color: #fff !important;
+        padding-left: 5px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-right: 5px;
+        
+            
+    }
+    .staff_container .staff{
+        margin-bottom: 10px;
+        border-bottom: solid 1px #356666;
+    }    
+    .staff_container .staff_name{
+        font-weight: bold;
+    }
+
+
+/*HEADER*/
+/*SECTION*/    
+/*mobile Header*/
+#border{
+top: 55px;
+width:100%;
+height:10px;
+background:rgba(255,255,255,0.77);
+}    
+#header-mobile{
+height:50px;
+width: 100vw !important;
+padding-bottom: 10px;
+z-index:20000 !important; /*prevent menu overlay*/
+position: fixed;
+/*position: -webkit-sticky;
+position: sticky;*/
+top: 0;
+background-image: none;    
+background:#fff;
+/*border-bottom:solid 1px #003333;*/
+background:  rgb(229,230,220); /*#fff;/* rgb(229,230,220);  ;/*003333;*/
+}
+#header-mobile{
+
+}
+#header-mobile img{
+ height: inherit;
+ /*max-height: 45px;    */
+}
+
+#header-mobile-menu{
+float: right;
+position: relative;
+margin-right: 5%;
+margin-top: 5px;
+}    
+
+#mobile_anfahrt{
+        position: relative;
+        top:2px;
+/*margin-left:10px;*/
+
+}
+#mobile_kontakt{
+        position: relative;
+        top:4px;
+      /* height: 26px;*/
+}
+#mobile_kontakt img{
+height:46px;
+}
+#mobile_anfahrt img{
+height:50px;
+}
+.logocontainer{
+    display: inline-block;
+    min-width: 45px;
+}
+/*Buttons im Header*/
+/*MENÜButton*/
+#btn_menu{
+     background:transparent;
+     color:#336666;
+     border:none;
+     position:relative;
+     width: 40px;
+     height: 50px;
+     font-size: 0;
+     text-indent: -9999px;
+     appearance: none;
+     box-shadow: none;
+     border-radius: none;
+     border: none;
+     cursor: pointer;
+     margin-right: 5px;
+}
+#btn_menu span {
+      display: block;
+      position: absolute;
+      top: 32px;
+      left: 15px;
+      right: 0px;
+      height: 3px;
+      background: #003333; /*#336666;*/
+     border-radius: 5px;
+}
+
+#btn_menu span::before,
+#btn_menu span::after {
+      position: absolute;
+      display: block;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color:  #003333; /*#336666;*/
+      content: "";
+      border-radius: 5px;
+}
+
+#btn_menu span::before {
+      top: -20px;
+}
+
+#btn_menu span::after {
+      top: -10px;
+}
+     
+/*ANIMATION*/
+
+
+/* active state, i.e. menu open */
+
+#btn_menu.iqb_not_homepage_init span::before {
+  top: -2px;
+}
+
+#btn_menu.iqb_not_homepage_init span::after {
+  top: -1px;
+}
+
+#btn_menu.is-active span::before {
+  top: -2px;
+}
+
+#btn_menu.is-active span::after {
+  top: -1px;
+}
+
+/*SUCHButton*/
+#btn_search{
+display: block;    
+ position: relative;
+margin-left:  10px;
+ width: 30px;
+ height: 38px;
+padding-top:12px;
+    /*height + padding-top = headerheight*/
+}
+.search_glass {
+position:relative;
+display:inline-block;
+background: transparent;
+border-radius: 30px;
+height: 12px;
+width: 12px;
+border: 3px solid #003333 /* #fff; /*#336666;*/
+}
+.search_glass:after {
+content: "";
+height: 3px;
+width: 11px;
+background: #003333; /*#336666;*/
+position:absolute;
+top:14px;
+left:9px;
+border-radius: 5px;
+-webkit-transform: rotate(45deg);
+-moz-transform: rotate(45deg);
+-ms-transform: rotate(45deg);
+-o-transform: rotate(45deg);
+transform: rotate(45deg);
+}
+/*######################################################################################################################################################*/
+/*######################################################################################################################################################*/
+/*######################################################################################################################################################*/
+/*######################################################################################################################################################*/
+/*######################################################################################################################################################*/
+/*LOCATION MENU*/
+
+#mlocation{
+    font-size: larger;
+    background:#336666;
+    width: 100%;
+    max-width: 100vw;
+   overflow: hidden;
+   height:0px;
+    -webkit-transition: height 0.4s ease;
+    -moz-transition: height 0.4s ease;
+    -o-transition: height 0.4s ease;
+    transition: height 0.4s ease;  
+}
+#mlocation.is-active{
+height:40vh;
+}
+#mlocation  ul{
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 15px; 
+    height: 100%;
+   padding-bottom:15px;
+}
+#mlocation li{
+    float: none;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-bottom: 1px;
+    background:#003333;
+    display: block;
+    margin-bottom: 0px;
+    height: auto;
+    vertical-align: middle;
+    padding-top: 10px;
+    padding-bottom: 10px;
+     outline: 1px solid #fff;
+
+}
+#mlocation a{
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    width: 100%;    
+text-indent: 5%;
+   display:block;
+     }        
+
+
+#mlocation a:hover{
+    border: none;
+    border-radius: 0px;
+ }
+
+/*######################################################################################################################################################*/
+/*######################################################################################################################################################*/
+/*######################################################################################################################################################*/
+/*######################################################################################################################################################*/
+/*######################################################################################################################################################*/
+/*TOP MENU*/     
+#nav-mobile{
+/*for STICKY header*/
+margin-top:55px;
+}
+#mobilemenu {
+    font-size: larger;
+    background:#336666;
+    width: 100%;
+    max-width: 100vw;
+    overflow:hidden;
+    overflow-y: auto;    
+    position:relative;
+	max-height:380px;
+}
+#mobilemenu.iqb_homepage_menu_init{
+    height: 0;
+}       
+#mobilemenu.not-active{
+    height: 0;
+}        
+#mobilemenu.is-active{         
+    height: 77vh ;
+}     
+
+#mobilemenu .main_innercontent
+{
+		visibility:hidden;
+}
+
+#mobilemenu .innercontent > ul.first{
+    width: 100%;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 35px; 
+    height: 100%;
+  
+}
+/*Container für Menüpunkte */    
+.innercontent{
+    display: block;
+    height: auto;
+ }     
+#mobilemenu li{
+    float: none;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-bottom: 1px;
+}
+#mobilemenu a{
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    margin-left: 5%;
+    width: 70%;    
+    float: left;
+     }        
+.first_li{
+    background:#003333;  /* #172d2b;   */
+    display: block;
+    margin-bottom: 0px;
+    height: auto;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+     outline: 1px solid #fff;
+}
+
+#mobilemenu a:hover{
+    border: none;
+    border-radius: 0px;
+ }
+
+#mobilemenu .secondmenu{
+    display: inline;
+    float: right;
+    width: 20%;
+    margin: 0px;
+    background:#003333; /* #172d2b;*/
+    color: #fff;
+    border: none;
+    padding: 0;
+    min-height: 0px;
+    min-width: 0px;
+    border-left: solid 1px rgba(53,102,102,1);
+ }
+#mobilemenu .chevron::before {
+    /*background: red;*/
+	border-style: solid;
+	border-width: 0.12em 0.12em 0 0;
+	content: '';
+	display: inline-block;
+	height: 14px;
+    width: 14px;
+	left: 0.15em;
+    top: 0.15em;
+    transition-duration: 0.4s;
+	position: relative;
+	transform: rotate(-45deg);
+	vertical-align: top;
+    z-index:1;
+}
+#mobilemenu .chevron.bottom:before {
+	transform: rotate(135deg) ;
+    -moz-transform-origin: 51% 50%;
+    -ms-transform-origin: 51% 50%;
+    -o-transform-origin: 51% 50%;
+    -webkit-transform-origin: 51% 50%;
+    transform-origin: 51% 50%;
+    transition-duration: 0.4s;
+}     
+#mobilemenu .secondmenu.is-active .chevron.bottom:before {
+	transform: rotate(-45deg);
+    -moz-transform-origin: 51% 50%;
+    -ms-transform-origin: 51% 50%;
+    -o-transform-origin: 51% 50%;
+    -webkit-transform-origin: 51% 50%;
+    transform-origin: 51% 50%;
+    transition-duration: 0.4s;
+}     
+     
+ #mobilemenu .secondmenu::after{   
+    clear: both;
+ }
+.subnavimobile {
+    overflow: hidden;
+    width: 100%;
+   max-height:0px;
+    -webkit-transition: max-height 0.3s;
+    -moz-transition: max-height 0.3s ;
+    -o-transition: max-height 0.3s ;
+    transition: max-height 0.3s ;
+}
+#mobilemenu .active .subnavimobile{
+max-height:100%;
+}
+#mobilemenu.jsactive .subnavimobile{
+    max-height: 0px;
+}
+#mobilemenu.jsactive .subnavimobile.is-active{
+    max-height: 940px;
+    -webkit-transition: max-height 1s;
+    -moz-transition: max-height 1s ;
+    -o-transition: max-height 1s ;
+    transition: max-height 1s ; 
+}        
+.subnavimobile .innercontent > ul{
+    width: 100%;
+    max-width: 600px;
+    padding-top: 15px; 
+    padding-bottom: 15px;     
+    height: auto;
+}    
+
+/*Untermenü*/    
+   
+ #mobilemenu li .subnavimobile a{
+  font-weight: 100;
+  width: 100%;
+  margin: 0;
+          
+  padding: 0;
+  padding-left: 5px;
+  /*padding-top: 5px;*/
+  padding-bottom: 15px;
+     
+    }
+#lngselection{
+width:90%;
+margin-top:10px;
+margin-left: auto;
+margin-right: auto;
+text-align:center;
+}
+#lngselection a{
+float:none;
+width: 32px;
+margin: 0
+}
+
+#lngselection img{
+height:25px;
+margin-left: -16px;
+}
+/*######################################################################################################################################################*/
+/*######################################################################################################################################################*/
+/*######################################################################################################################################################*/
+/*######################################################################################################################################################*/
+/*######################################################################################################################################################*/
+/*L3/L4 Menü*/
+
+
+#subnavigation-mobile{
+background: #336666;
+color: #fff;
+}
+#subnavigation-mobile ul.subnavi-mobile.lvl2 > li{
+outline: 1px solid #fff;
+}
+#subnavigation-mobile ul.subnavi-mobile.lvl2 > li > a{
+line-height: 2em;
+margin-left: 10px;
+color: #fff;
+font-size:1em;
+display:block;
+width:100%;
+
+}
+#subnavigation-mobile ul.subnavi-mobile.lvl2 > li > a >span.label{
+margin-left:10px;
+}
+
+#subnavigation-mobile ul.subnavi-mobile.lvl2 >li ul.subnavi-mobile.lvl3{
+display:none;
+visibility:collapsed;
+}
+
+#subnavigation-mobile ul.subnavi-mobile.lvl2 > li.open ul.subnavi-mobile.lvl3{
+display:block;
+visibility:visible;
+}
+
+
+#subnavigation-mobile.jsactive ul.subnavi-mobile.lvl2 > li.open ul.subnavi-mobile.lvl3{
+display:none;
+visibility:collapsed;
+}
+
+#subnavigation-mobile ul.subnavi-mobile.lvl3 > li > a{
+line-height: 2em;
+margin-left: 25px;
+color: #fff;
+font-size:10pt;
+
+}
+.accordion-container{
+overflow: hidden;
+background:#fff;
+color:#000;
+max-height:0px;
+ -webkit-transition: max-height 0.3s;
+    -moz-transition: max-height 0.3s ;
+    -o-transition: max-height 0.3s ;
+    transition: max-height 0.3s ;
+}
+.accordion-container.is-active{
+max-height:32000px;
+ -webkit-transition: max-height 0.1s;
+    -moz-transition: max-height 0.1s ;
+    -o-transition: max-height 0.1s ;
+    transition: max-height 0.1s ;
+}
+.accordion-content{
+padding-top:15px;
+padding-bottom:15px;
+}
+#subnavigation-mobile span.chevron{
+
+}
+#subnavigation-mobile .chevron::before {
+	border-style: solid;
+	border-width: 0.12em 0.12em 0 0;
+	content: '';
+	display: inline-block;
+	height: 10px;
+        width: 10px;
+	left: 0.15em;
+        top: 7px;
+        transition-duration: 0.4s;
+	position: relative;
+	transform: rotate(-45deg);
+	vertical-align: top;
+        z-index:1;
+}
+#subnavigation-mobile .chevron.bottom:before {
+	transform: rotate(45deg) ;
+    -moz-transform-origin: 51% 50%;
+    -ms-transform-origin: 51% 50%;
+    -o-transform-origin: 51% 50%;
+    -webkit-transform-origin: 51% 50%;
+    transform-origin: 51% 50%;
+    transition-duration: 0.4s;
+}     
+#subnavigation-mobile a.is-active .chevron.bottom:before {
+	transform: rotate(-45deg);
+    -moz-transform-origin: 51% 50%;
+    -ms-transform-origin: 51% 50%;
+    -o-transform-origin: 51% 50%;
+    -webkit-transform-origin: 51% 50%;
+    transform-origin: 51% 50%;
+    transition-duration: 0.4s;
+}    
+
+
+
+
+/*######################################################################################################################################################*/
+/*######################################################################################################################################################*/
+/*######################################################################################################################################################*/
+/*######################################################################################################################################################*/
+/*######################################################################################################################################################*/
+/*SUCHSEITE*/
+#searchmobile{
+ display: none;
+ position: fixed;
+ height: 100vh;
+ width: 100vw;
+ background: rgba(23,45,43,.95);
+ left: 0;
+ top:0;
+ z-index: 32000;
+}
+#searchmobile .searchbox{
+ margin-top: 30%;
+ margin-left: auto;
+ margin-right:auto;
+ width: 80%;
+ max-width: 444px;    
+ position: relative;
+}
+#searchmobile input.search{
+ padding-left: 2%;
+ font-size: larger;
+ color: #336666;
+ height: 45px;
+ width: 98%;
+ 
+ border-radius: 5px;
+ border: 1px solid #336666;
+ background: #fff;
+ display: block;
+}
+#btn_submit_search{
+ position: absolute;
+ top:0px;    
+ right: 5px;
+ width: 45px;
+ height: 45px;
+background: transparent;
+    border: none;
+ /*background: red;*/
+ }    
+#btn_exit_search{
+ display: block;
+ background: transparent;
+ height:32px;
+ width: 32px;
+ margin-top: 25px;    
+ margin-left: auto;
+ margin-right: auto;
+ border: none;
+ position: relative;
+    padding: 0;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 15px;
+  top:0px;    
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: #fff;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+
+    
+.noscroll { 
+overflow: hidden;
+}
+
+.slides_container
+{
+	height: 283px;
+}
+
+.display_only_on_mobile
+{
+	display: none;
+}
+/*#######################################################################*/
+/*#######################################################################*/
+/*#######################################################################*/
+/*#######################################################################*/
+
+
+@media screen and (max-width: 1024px) {
+	.mobile{display: block;visibility: visible;}    
+	.desktop{display: none;visibility: collapse;}    
+
+	body{
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		overflow-x:hidden;
+	  max-width:100vw;
+	}
+	*{
+	outline: none;        
+	}
+	img{
+	height: auto;
+	width: auto;
+	max-width: 100%;
+	}
+
+
+	 #page-wrapper{
+	width: 100%;
+	}
+	.tablecontainer{
+	overflow-x:auto;
+	/* max-width:100%; */
+	width:100%;
+	}
+
+	#main{
+	  width: 90vw !important;
+	  margin-left: 5vw !important;
+	  margin-right: 5vw !important;
+
+	padding-top:20px !important;
+	}
+
+	._column1{
+	  display: none;
+	  visibility: collapse;
+	}    
+
+	/* Dan Barbulescu; 08.05.2017 */
+	.startseite #main{
+		background: none;
+	}
+	#root-contentstatic{
+			display: initial;
+			visibility: initial;
+			text-align: center;
+			width: 90%;
+			padding: 2% 2% 2% 2%;
+			margin-left: 3%;
+			margin-right: auto;
+			margin-bottom: 36px;
+	}
+	#page-footnote
+	{
+		margin-right: 5%;
+	}
+
+	#linkboxes img, #linkboxes .kontakt-teaser
+	{
+			margin: auto;
+			margin-top: 24px;
+	}
+	/* end of Dan Barbulescu; 08.05.2017 */
+	.unterseite-ohne-rand #maincontent
+	{
+		width: 100%;
+	}
+
+	#maincontent,#root-contentplus{
+	width:70%;
+	margin:0;
+	margin-right:5%;
+	line-height:1.6 !important;
+	font-size:1.25em;
+	}
+	#maincontent h1{
+	line-height:1.2 !important;
+	font-size:1.4em;
+	}
+
+
+	#linkboxes{
+	width: 25%;
+	float: right;
+	margin:0;
+	}
+	#linkboxes .teaser-wrapper{
+	margin-bottom:0px;
+	}
+	#linkboxes img,#linkboxes .kontakt-teaser{
+	 max-width: 100%;
+	}    
+	#page-footer{
+	width: 100% !important;  
+	background-image: none;    
+	background: #172d2b; 
+	padding: 0;    
+	padding-top:15px;
+		
+	}
+	#page-footer .footeraddresses{
+	 width: 90% !important;
+	 padding-left: 5%;
+	padding-right: 5%;  
+	background-image: none;    
+	background: #336666;
+	margin: 0;
+		
+	padding-top: 15px;    
+	}    
+	#page-footer .footeraddresses .footerpart{
+		padding: 0;
+		margin: 0;
+		margin-bottom: 15px;
+		width: 100%;
+		}
+	#page-footer .footermenu{
+		width: 90%;
+		padding-left: 5%;
+		word-spacing: -0.3em;
+		padding-right: 5%;  
+		margin-bottom: 10px;    
+	}
+	#page-footer li a{
+	width: 80%;    
+	}    
+}
+/*END @MEDIA Tablet*/
+
+/*Inbetween TABLET and SMARTPHONES*/
+@media screen and (max-width: 700px) {
+	.ma_v2_employees_subdiv
+	{
+		width: 50%;
+	}
+	.ma_v2_employees_subdiv_second{
+		text-align: left;
+	}
+}
+/*END @MEDIA Inbetween TABLET and SMARTPHONES*/
+
+
+/*SMARTPHONES*/
+@media screen and (max-width: 568px) {
+	.save-pdf{display: none !important;}
+	.print{display: none !important;}
+
+	._column1{
+			display: none;
+			visibility: collapse;
+	}
+
+	/* Dan Barbulescu; 08.05.2017 */
+	.startseite #main{
+		background: none;
+	}
+
+	#root-contentstatic{
+			display: initial;
+			visibility: initial;
+			text-align: center;
+			width: 90%;
+			margin-left: 2%;
+			margin-right: auto;
+	}
+	#page-footnote
+	{
+		margin-right: 10%;
+	}
+
+	#linkboxes{
+		text-align: center;
+	}
+	/* end of Dan Barbulescu; 08.05.2017 */
+
+	#mobilemenu .innercontent > ul.first{
+		padding-top: 15px; 
+	  
+	}
+
+	#maincontent,#root-contentplus {
+	   width: 100%;
+	max-width:90vw;
+	  float: left;
+		line-height: 1.5 !important;
+		margin: 0;
+	  margin-bottom: 20px;
+	  font-size:1.1em;
+	}
+	#maincontent h1{
+	line-height:1.2 !important;
+	font-size:1.3em;
+	}
+	#linkboxes{
+	  width: 100%;
+	  margin: 0;
+	}
+
+	#datatable-wrapper{
+	width:100%;
+	overflow-x:auto;
+	}
+	#poolinfo{
+	}
+	
+	div.ma_v2_short
+	{
+		max-width: 100%;
+	}
+	
+	.ma_v2_employees_subdiv
+	{
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	.ma_v2_employees_subdiv_second{
+		text-align: left;
+	}
+	
+	.ma_v2_employees_subdiv_third{
+		margin-bottom: 10px;
+	}
+	
+	.display_only_on_desktop
+	{
+		display: none;
+	}
+
+	.display_only_on_mobile
+	{
+		display: initial;
+	}
+}
+
+
+
+/* Dan Barbulescu; 08.05.2017; Updated 03.07.2017 */
+#header-mobile, #main, #page-footer 
+{
+
+}
+
+#iqb-logo-mobile{
+position: absolute;
+left: 4%;
+top: 2px;
+height: inherit;
+}
+
+#header-mobile #iqb-logo-mobile-img{
+	height: 55px;
+}
+
+#iqb-logo-mobile-text{
+	color: black;
+	font-size: 9px;
+	font-family: "Trebuchet MS", Arial, Helvetica;
+	position: relative;
+	padding-left: 5px;
+	top: -4px;
+}
+
+#iqb-logo-mobile-text-line-2{
+
+}
+
+
+@media screen and (max-width: 360px) {
+	#header-mobile #iqb-logo-mobile-img
+	{
+		height: 45px;
+	}
+	#iqb-logo-mobile{
+		left: 5%;
+		top: 7px;
+	}
+	#iqb-logo-mobile-text{
+		font-size: 8px;
+		padding-left: 4px;
+	}
+	#iqb-logo-mobile-text-line-2{
+
+	}
+	#root-contentstatic{
+		margin-left: 2%;
+	}
+	.logocontainer{
+		min-width: 40px;
+	}
+}
+
+@media screen and (max-width: 319px) {
+	.logocontainer{
+		min-width: 35px;
+	}
+	#main
+	{
+		width: 89vw !important;
+	}
+	#root-contentstatic{
+		margin-left: 1%;
+	}
+}
+
+html
+{
+	touch-action: auto;
+}
+
+
+/* end of Dan Barbulescu; 08.05.2017; updated 03.07.2017 */

@@ -1,0 +1,176 @@
+/* order of css classes is important for correct prioritization of style options in custom IQB tables */
+
+/* iqb_table_plain */
+.iqb_table_plain {
+
+}
+
+
+/* iqb_table_plain_with_borders */
+.iqb_table_plain_with_borders {
+ border: 1px solid lightgray;
+}
+
+.iqb_table_plain_with_borders tr, .iqb_table_plain_with_borders tr td {
+ border: 1px solid lightgray;
+}
+
+/* iqb_table_bold_left_column_normal_right */
+.iqb_table_bolded_left_column {
+
+}
+
+.iqb_table_bolded_left_column tr td:first-child {
+ font-weight: bold;
+ color: #003333;
+}
+
+/* iqb_table_alternating_colors_with_row_header */
+.iqb_table_alternating_colors_with_row_header {
+	border-left: 1px solid #DDDDDD;
+	border-top: 1px solid #DDDDDD;
+	table-layout: fixed;
+	width: 100%;
+}
+
+.iqb_table_alternating_colors_with_row_header tr:first-child td {
+	background-color: #E8EBAF!important;
+	padding: 6px;
+	color: #003333!important;
+	text-align: left;
+	width: 45%;
+}
+
+.iqb_table_alternating_colors_with_row_header td {
+	border-right: 1px solid #DDDDDD;
+	border-bottom: 1px solid #DDDDDD;
+}
+
+.iqb_table_alternating_colors_with_row_header tr:nth-child(odd) {
+	background-color: #F4F4F4;
+
+}
+
+.iqb_table_alternating_colors_with_row_header tr:nth-child(even) {
+	background-color: white;
+}
+
+.iqb_table_alternating_colors_with_column_header {
+	border-left: 1px solid #DDDDDD;
+	border-top: 1px solid #DDDDDD;
+	table-layout: fixed;
+	width: 100%;
+}
+
+.iqb_table_alternating_colors_with_column_header tr td:first-child {
+	background-color: #E8EBAF!important;
+	padding: 6px;
+	color: #003333!important;
+	text-align: left;
+	width: 45%;
+}
+
+.iqb_table_alternating_colors_with_column_header td {
+	border-right: 1px solid #DDDDDD;
+	border-bottom: 1px solid #DDDDDD;
+}
+
+.iqb_table_alternating_colors_with_column_header tr:nth-child(odd) {
+	background-color: #F4F4F4;
+
+}
+
+.iqb_table_alternating_colors_with_column_header tr:nth-child(even) {
+	background-color: white;
+}
+
+.iqb_table_alternating_colors_without_headers {
+	border-left: 1px solid #DDDDDD;
+	border-top: 1px solid #DDDDDD;
+	table-layout: fixed;
+	width: 100%;
+}
+
+.iqb_table_alternating_colors_without_headers td {
+	border-right: 1px solid #DDDDDD;
+	border-bottom: 1px solid #DDDDDD;
+}
+
+.iqb_table_alternating_colors_without_headers tr:nth-child(odd) {
+	background-color: #F4F4F4;
+
+}
+
+.iqb_table_alternating_colors_without_headers tr:nth-child(even) {
+	background-color: white;
+}
+
+.iqb_table_alternating_colors_with_row_and_column_headers {
+	border-left: 1px solid #DDDDDD;
+	border-top: 1px solid #DDDDDD;
+	table-layout: fixed;
+	width: 100%;
+}
+
+.iqb_table_alternating_colors_with_row_and_column_headers tr:first-child td {
+	background-color: #E8EBAF!important;
+	padding: 6px;
+	color: #003333!important;
+	text-align: left;
+	width: 45%;
+}
+
+.iqb_table_alternating_colors_with_row_and_column_headers tr td:first-child {
+	background-color: #E8EBAF!important;
+	padding: 6px;
+	color: #003333!important;
+	text-align: left;
+	width: 45%;
+}
+
+.iqb_table_alternating_colors_with_row_and_column_headers td {
+	border-right: 1px solid #DDDDDD;
+	border-bottom: 1px solid #DDDDDD;
+}
+
+.iqb_table_alternating_colors_with_row_and_column_headers tr:nth-child(odd) {
+	background-color: #F4F4F4;
+
+}
+
+.iqb_table_alternating_colors_with_row_and_column_headers tr:nth-child(even) {
+	background-color: white;
+}
+
+table.iqb_custom_style_table .iqb_custom_tr_follow_table_design, table.iqb_custom_style_table tr.iqb_custom_tr_follow_table_design td {
+}
+
+table.iqb_custom_style_table .iqb_custom_tr_white_background, table.iqb_custom_style_table tr.iqb_custom_tr_white_background td {
+ background-color: white !important;
+}
+
+table.iqb_custom_style_table .iqb_custom_tr_lightgray_background, table.iqb_custom_style_table tr.iqb_custom_tr_lightgray_background td  {
+ background-color: #F4F4F4 !important;
+}
+
+table.iqb_custom_style_table .iqb_custom_tr_pistachio_background, table.iqb_custom_style_table tr.iqb_custom_tr_pistachio_background td {
+ background-color: #e8ebaf !important;
+}
+
+
+table.iqb_custom_style_table tr td.iqb_custom_td_follow_table_design, {
+}
+
+table.iqb_custom_style_table tr td.iqb_custom_td_white_background {
+ background-color: white !important;
+}
+
+table.iqb_custom_style_table tr td.iqb_custom_td_lightgray_background  {
+ background-color: #F4F4F4 !important;
+}
+
+table.iqb_custom_style_table tr td.iqb_custom_td_pistachio_background {
+ background-color: #e8ebaf !important;
+}
+
+/* end of section where order is important for proper prioritization */
