@@ -1,0 +1,18 @@
+{
+  "name": "www2-it-api",
+  "version": "1.0.0",
+  "description": "Tiny API behind the www2 nginx: available-PCs feed and ClickOnce app uploads for the /it/ section",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/server.mjs",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "yauzl": "^3.4.0"
+  }
+}

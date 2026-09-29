@@ -1,0 +1,39 @@
+[
+  {
+    "id": "IQB-Kodieren",
+    "title": "IQB-Kodieren",
+    "description": "<p>Am IQB werden Antworten von Schülerinnen und Schülern aus verschiedenen Testungen auf ihre Richtigkeit hin beurteilt. Um diese Kodierung der Schülerantworten effizient zu gestalten, wurde vom EDV-Team diese Anwendung programmiert. Mit diesem Programm werden die beantworteten Testheftseiten jeder Schülerin und jedes Schülers angezeigt. Um einzelne Antworten als richtig oder falsch zu kodieren, wählt der Kodierer bzw. die Kodiererin aus einer Liste möglicher Codes aus. Weitere Informationen in&nbsp;<img src=\"/it/docs/pdfpic.gif\" alt=\"PDF\" /> <a title=\"IQB-Kodieren.pdf\" href=\"/it/docs/IQB-Kodieren.pdf\">diesem Dokument</a>.</p>",
+    "manual": "docs/IQB-Kodieren.pdf"
+  },
+  {
+    "id": "IQB-ScanViewer",
+    "title": "IQB-ScanViewer",
+    "description": "<p>An die Partnereinrichtungen des IQB werden regelmäßig Scans ausgegeben. Es handelt sich dabei um Seiten aus Testheften, die im Rahmen von IQB-Studien von Testpersonen beantwortet wurden. Die Partner nutzen diese Antworten beispielsweise bei der Analyse von Aufgabeneigenschaften.</p><p>Die Anwendung \"IQB-ScanViewer\" bietet einen schnellen Weg, diese Scanpakete zu sichten und gezielt Scans zu exportieren. Voraussetzung ist ein Scanpaket vom IQB, das Zusatzdaten wie beispielsweise Variablenkodierung enthält.</p>"
+  },
+  {
+    "id": "IQB-ScanMultiTool",
+    "title": "IQB-ScanMultiTool",
+    "description": "<p>Das Scan-Management am IQB setzt voraus, dass die Scandateien in einer bestimmten Art benannt sind. Die Anwendung \"IQB-ScanMultiTool\" nimmt diese Umbenennung vor und führt dabei umfangreiche Prüfungen durch. Nähere Informationen bei der IQB-EDV!</p>"
+  },
+  {
+    "id": "IQB-ScanManager",
+    "title": "IQB-ScanManager",
+    "description": "<p>An die Partnereinrichtungen des IQB werden regelmäßig Scans ausgegeben. Es handelt sich dabei um Seiten aus Testheften, die im Rahmen von IQB-Studien von Testpersonen beantwortet wurden. Die Partner nutzen diese Antworten beispielsweise bei der Analyse von Aufgabeneigenschaften.</p><p>Die Anwendung \"IQB-ScanManager\" ermöglicht einen schnellen Überblick über Scans und bereitet Kodierungen vor. Weitere Informationen in&nbsp;<img src=\"/it/docs/pdfpic.gif\" alt=\"PDF\" /> <a title=\"IQB-Doku ScanManager.pdf\" href=\"/it/docs/IQB-ScanManager.pdf\">diesem Dokument</a>.</p>",
+    "manual": "docs/IQB-ScanManager.pdf"
+  },
+  {
+    "id": "IQB-Aufgabensammlung",
+    "title": "IQB-Aufgabensammlung",
+    "description": "<p>Mit dieser Anwendung kann man Metadaten und Dateien für Aufgabensammlungen des IQB in den Web-Auftritt des IQB hochladen. Dazu sind Administratorrechte notwendig, die das EDV-Team des IQB nach Absprache erteilt. Diese Anwendung wird hier zur Installation angeboten für den Fall, dass Verantwortliche für eine IQB-Aufgabensammlung diesen Transfer außerhalb des IQB vornehmen möchten (Home-Office).</p>"
+  },
+  {
+    "id": "IQB-PortalDownload",
+    "title": "IQB-PortalDownload",
+    "description": "<p>Diese Anwendung speichert Dateien aus den Portalen des IQB-Internetauftrittes lokal. Es können über die Archiv-Funktion auch kumulative Backups angelegt werden.</p>"
+  },
+  {
+    "id": "itc-ToolBox",
+    "title": "itc-ToolBox",
+    "description": "<p>Die Windows-Anwendung \"itc-ToolBox\" unterstützt die Erzeugung von Dateien für und die Verarbeitung von Dateien aus dem IQB-Testcenter. Sie finden ausführliche Anleitungen <a href=\"https://iqb-berlin.github.io/tba-info/Testcenter/toolbox/\" target=\"_blank\" rel=\"noopener\">auf diesen Seiten</a>. Der Quellcode ist hier veröffentlicht: <a href=\"https://github.com/iqb-berlin/itc-toolbox\" target=\"_blank\" rel=\"noopener\">GitHub</a>.</p>"
+  }
+]

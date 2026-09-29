@@ -249,6 +249,8 @@ prepare_installation_dir() {
 
   mkdir -p "${APP_DIR}/backup/release"
   mkdir -p "${APP_DIR}/config/assets"
+  mkdir -p "${APP_DIR}/api"
+  mkdir -p "${APP_DIR}/downloads"
   mkdir -p "${APP_DIR}/scripts/make"
   mkdir -p "${APP_DIR}/scripts/migration"
 
@@ -274,8 +276,11 @@ download_dir() {
   declare remote_dir="${2}"
   declare archive_url="https://github.com/iqb-berlin/${APP_NAME}/archive/refs/tags/${TARGET_VERSION}.tar.gz"
 
+  # strip "<repo>-<tag>/" plus every path component of remote_dir itself
+  declare -i strip_components=$(( $(printf "%s" "${remote_dir}" | tr -cd '/' | wc -c) + 2 ))
+
   if curl --silent --fail --location "${archive_url}" \
-      | tar -xz -C "${local_dir}" --strip-components=3 "${APP_NAME}-${TARGET_VERSION}/${remote_dir}"; then
+      | tar -xz -C "${local_dir}" --strip-components="${strip_components}" "${APP_NAME}-${TARGET_VERSION}/${remote_dir}"; then
     printf -- "- Directory '%s' successfully downloaded.\n" "${local_dir}"
   else
     printf -- "- Directory '%s' download failed.\n\n" "${local_dir}"
@@ -293,6 +298,7 @@ download_files() {
   download_file ".env.${APP_NAME}.template" ".env.${APP_NAME}.template"
   download_file "config/default.conf.template" "config/default.conf.template"
   download_dir "config/assets" "config/assets"
+  download_dir "api" "api"
   download_file "scripts/make/${APP_NAME}.mk" scripts/make/prod.mk
   download_file "scripts/update_${APP_NAME}.sh" scripts/update.sh
   chmod +x "scripts/update_${APP_NAME}.sh"

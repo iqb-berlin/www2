@@ -1,0 +1,10 @@
+/* Small additions for the /it/ section; the IQB look comes from /system/*.css */
+#maincontent .it-loading { color: #666; font-style: italic; }
+#maincontent .it-error { color: #c00; }
+#maincontent #ul_pcs li { font-family: "Courier New", monospace; }
+#maincontent #btn-install {
+  font-size: 16px;
+  padding: 8px 24px;
+  cursor: pointer;
+}
+#maincontent #app-description img { vertical-align: middle; }

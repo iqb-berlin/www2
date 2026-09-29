@@ -2,13 +2,55 @@ services:
   landing-page:
     image: ${REGISTRY_PATH}nginxinc/nginx-unprivileged:stable
     restart: always
+    environment:
+      TRUSTED_PROXY_CIDR: ${TRUSTED_PROXY_CIDR:-127.0.0.1/32}
+    depends_on:
+      - it-api
     volumes:
       - "./config/default.conf.template:/etc/nginx/templates/default.conf.template:ro"
       - "./config/assets:/usr/share/nginx/html:ro"
+      # ClickOnce deployment trees, written by it-api, served read-only under /it/dl/
+      - "${DOWNLOADS_DIR:-./downloads}:/srv/www/it/dl:ro"
     networks:
       - application-network
+      - it-internal
+
+  it-api:
+    build: ./api
+    image: ${REGISTRY_PATH}iqb-berlin/www2-it-api:${TAG:-latest}
+    restart: always
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      DOWNLOADS_DIR: /data/downloads
+      STATE_DIR: /data/state
+      PC_UPDATE_TOKEN: ${PC_UPDATE_TOKEN}
+      PC_UPDATE_ALLOW_CIDRS: ${PC_UPDATE_ALLOW_CIDRS:-}
+      PC_MAX: ${PC_MAX:-29}
+      UPLOAD_TOKENS: ${UPLOAD_TOKENS}
+      UPLOAD_MAX_MB: ${UPLOAD_MAX_MB:-500}
+      EXPECTED_DEPLOY_BASE: https://${SERVER_NAME}/it/dl/
+    volumes:
+      - "${DOWNLOADS_DIR:-./downloads}:/data/downloads"
+      - "it-api-state:/data/state"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/it/api/health').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    networks:
+      # deliberately NOT on app-net: only reachable through the nginx proxy
+      - it-internal
+
+volumes:
+  it-api-state:
 
 networks:
   application-network:
     name: app-net
     external: true
+  it-internal:

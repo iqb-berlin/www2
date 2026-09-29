@@ -10,3 +10,10 @@ Thumbs.db
 
 # Logs
 *.log
+
+# ClickOnce deployment trees are pushed via the API, never committed
+downloads/*
+!downloads/.gitkeep
+
+# Node
+api/node_modules/

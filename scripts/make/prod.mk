@@ -23,13 +23,13 @@ www2-up:
 			--env-file $(WWW2_BASE_DIR)/.env.www2\
 			--file $(WWW2_BASE_DIR)/docker-compose.www2.yaml\
 			--file $(WWW2_BASE_DIR)/docker-compose.www2.prod.yaml\
-		pull
+		pull --ignore-buildable
 	@if test $(REGISTRY_PATH); then docker logout $(REGISTRY_PATH); fi
 	docker compose\
 			--env-file $(WWW2_BASE_DIR)/.env.www2\
 			--file $(WWW2_BASE_DIR)/docker-compose.www2.yaml\
 			--file $(WWW2_BASE_DIR)/docker-compose.www2.prod.yaml\
-		up -d
+		up -d --build
 
 # Stop and remove docker containers
 www2-down:

@@ -10,7 +10,20 @@ server {
     listen       8080;
     server_name  localhost;
 
-    client_max_body_size 0;
+    # Trust forwarded client addresses only from the configured Traefik peer.
+    set_real_ip_from ${TRUSTED_PROXY_CIDR};
+    real_ip_header X-Forwarded-For;
+    real_ip_recursive on;
+
+    # Redirects must not carry our internal host:port when running behind Traefik.
+    absolute_redirect off;
+
+    # Nothing outside the API accepts request bodies.
+    client_max_body_size 1m;
+
+    # Docker's embedded DNS; with a variable in proxy_pass nginx resolves the API
+    # lazily and starts even while the it-api container is still (re)starting.
+    resolver 127.0.0.11 valid=10s ipv6=off;
 
     #access_log  /var/log/nginx/host.access.log  main;
 
@@ -20,25 +33,123 @@ server {
     sub_filter 'https://local-assets/' '$asset_scheme://$http_host/';
     sub_filter_once off;
 
+    # ------------------------------------------------------------------------
+    # /it/api/  -> it-api container (the only proxied prefix)
+    # ------------------------------------------------------------------------
+    location ^~ /it/api/ {
+        set $it_api http://it-api:3000;
+        proxy_pass $it_api;
+        proxy_http_version 1.1;
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $asset_scheme;
+        # Stream app uploads straight to the API instead of spooling them to disk.
+        proxy_request_buffering off;
+        proxy_read_timeout 300s;
+        proxy_send_timeout 300s;
+        client_max_body_size 512m;
+    }
+
+    # ------------------------------------------------------------------------
+    # /it/dl/<App>/...  -> ClickOnce deployment trees (external volume, read-only)
+    # ------------------------------------------------------------------------
+    location ^~ /it/dl/ {
+        root /srv/www;
+        autoindex off;
+        default_type application/octet-stream;
+        types {
+            application/x-ms-application  application;
+            application/x-ms-manifest     manifest;
+            application/octet-stream      deploy exe dll msi;
+            text/html                     html htm;
+            text/plain                    txt;
+            application/xml               xml config;
+            application/pdf               pdf;
+            image/png                     png;
+            image/gif                     gif;
+            image/x-icon                  ico;
+        }
+
+        # .publish.json, .tmp/, .prev/ and any other dotfile
+        location ~ /\. { deny all; }
+
+        # ClickOnce re-reads these on every start to look for updates.
+        location ~ \.(application|manifest|exe|html?)$ {
+            add_header Cache-Control "no-cache";
+        }
+        # Payload files live in version-unique "Application Files/<App>_x_y_z_w/" folders.
+        location ~ \.deploy$ {
+            add_header Cache-Control "public, max-age=31536000, immutable";
+        }
+    }
+
+    # ------------------------------------------------------------------------
+    # /it/  -> static pages of the IT section (nginx SSI for the shared page chrome)
+    # ------------------------------------------------------------------------
+
+    # SSI fragments are only reachable through include subrequests.
+    location ^~ /it/_inc/ {
+        internal;
+        root /usr/share/nginx/html;
+    }
+
+    location = /it { return 301 /it/; }
+    location = /it/license { return 301 /it/license/; }
+    location = /it/available-pcs { return 301 /it/available-pcs/; }
+
+    # /it/<App>/ -> one shared template; 404 unless the app is actually deployed.
+    location ~ ^/it/(?!api/|dl/|docs/|_inc/|license/|available-pcs/)(?<app>[A-Za-z0-9][A-Za-z0-9_-]*)/$ {
+        root /usr/share/nginx/html;
+        if (!-f /srv/www/it/dl/$app/setup.exe) { return 404; }
+        ssi on;
+        try_files /it/app.html =404;
+    }
+    location ~ ^/it/(?!api/|dl/|docs/|_inc/|license/|available-pcs/)(?<app>[A-Za-z0-9][A-Za-z0-9_-]*)$ {
+        return 301 /it/$app/;
+    }
+
+    location /it/ {
+        root /usr/share/nginx/html;
+        ssi on;
+        index index.html;
+        try_files $uri $uri/ =404;
+    }
+
+    # ------------------------------------------------------------------------
+    # Legacy Zope paths of the old "Software des IQB" section
+    # ------------------------------------------------------------------------
+    location = /institut/ab/it               { return 301 /it/; }
+    location = /institut/ab/it/              { return 301 /it/; }
+    location = /institut/ab/it/license       { return 301 /it/license/; }
+    location = /institut/ab/it/license/      { return 301 /it/license/; }
+    location = /institut/ab/it/available_pcs  { return 301 /it/available-pcs/; }
+    location = /institut/ab/it/available_pcs/ { return 301 /it/available-pcs/; }
+
+    # Old info pages -> new info pages; old manuals -> /it/docs/
+    location ~ ^/institut/ab/it/(?<app>[^/]+)/?$ { return 301 /it/$app/; }
+    location ~ ^/institut/ab/it/(?<app>[^/]+)/(?<doc>[^/]+\.pdf)$ { return 301 /it/docs/$doc; }
+
+    # Old ClickOnce URLs keep working (no redirect: ClickOnce and the old setup.exe
+    # bootstrappers fetch these directly). Serves the *new* manifests, which lets
+    # installed clients migrate to the new deployment URL on their next update check.
+    location ~ ^/institut/ab/it/(?<app>[^/]+)/(?<rest>.+)$ {
+        rewrite ^ /it/dl/$app/$rest last;
+    }
+
+    # The existing IT page also resolves installers without the /it segment.
+    # Limit these aliases to the known programs to avoid swallowing other pages.
+    location ~ ^/institut/ab/(?<app>IQB-Kodieren|IQB-ScanViewer|IQB-ScanMultiTool|IQB-ScanManager|IQB-Aufgabensammlung|IQB-PortalDownload|itc-ToolBox)/(?<rest>.+)$ {
+        rewrite ^ /it/dl/$app/$rest last;
+    }
+
+    # ------------------------------------------------------------------------
+    # Landing page
+    # ------------------------------------------------------------------------
     location / {
         root   /usr/share/nginx/html;
         index  landing-page.html;
     }
 
-    #error_page  404              /404.html;
-
-    # redirect server error pages to the static page /50x.html
-    #
-    #error_page   500 502 503 504  /50x.html;
-    #location = /50x.html {
-    #    root   /usr/share/nginx/html;
-    #}
-
-    # deny access to .htaccess files, if Apache's document root
-    # concurs with nginx's one
-    #
-    #location ~ /\.ht {
-    #    deny  all;
-    #}
-
+    location ~ /\. { deny all; }
 }

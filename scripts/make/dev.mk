@@ -25,7 +25,7 @@ dev-up:
 	@if ! test $(shell docker network ls -q --filter name=app-net);\
 		then docker network create app-net;\
 	fi
-	docker compose --env-file $(WWW2_BASE_DIR)/.env.dev up -d
+	docker compose --env-file $(WWW2_BASE_DIR)/.env.dev up -d --build
 
 # Stop and remove all docker containers, preserve data volumes
 dev-down:

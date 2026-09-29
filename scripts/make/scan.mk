@@ -1,5 +1,6 @@
 WWW2_BASE_DIR := $(shell git rev-parse --show-toplevel)
 NGINX_IMAGE := $(shell docker compose --env-file $(WWW2_BASE_DIR)/.env.dev config --images | grep nginx)
+IT_API_IMAGE := $(shell docker compose --env-file $(WWW2_BASE_DIR)/.env.dev config --images | grep www2-it-api)
 
 # Docker Hub Proxy (Docker Hub: REGISTRY_PATH := )
 REGISTRY_PATH := scm.cms.hu-berlin.de:443/iqb/dependency_proxy/containers/
@@ -8,7 +9,7 @@ REGISTRY_PATH := scm.cms.hu-berlin.de:443/iqb/dependency_proxy/containers/
 TRIVY_VERSION := aquasec/trivy:latest
 
 # prevents collisions of make target names with possible file names
-.PHONY: scan-registry-login scan-registry-logout scan-www2
+.PHONY: scan-registry-login scan-registry-logout scan-www2 scan-it-api
 
 # disables printing the recipe of a make target before executing it
 .SILENT: scan-registry-login scan-registry-logout
@@ -44,3 +45,17 @@ scan-www2: scan-registry-login
 					--ignore-unfixed\
 					--severity CRITICAL\
 				$(NGINX_IMAGE)
+
+# builds and scans the it-api image for security vulnerabilities
+scan-it-api:
+	docker compose --env-file $(WWW2_BASE_DIR)/.env.dev build it-api
+	docker run\
+			--rm\
+			--volume /var/run/docker.sock:/var/run/docker.sock\
+			--volume ${HOME}/Library/Caches:/root/.cache/\
+		$(TRIVY_VERSION)\
+			image\
+					--scanners vuln\
+					--ignore-unfixed\
+					--severity CRITICAL\
+				$(IT_API_IMAGE)
