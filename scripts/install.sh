@@ -376,7 +376,7 @@ application_start() {
         --env-file ".env.${APP_NAME}" \
         --file "docker-compose.${APP_NAME}.yaml" \
         --file "docker-compose.${APP_NAME}.prod.yaml" \
-      up -d --no-build --pull never || return 1
+      up -d --no-build --pull never --force-recreate || return 1
   else
     printf "'%s' installation script finished.\n" "${APP_NAME}"
     exit 0

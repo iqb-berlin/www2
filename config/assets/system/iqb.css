@@ -30,7 +30,7 @@
 }
 
 .www2-header {
-  color: #339999;
+  color: #00818D;
   font-size: 96px;
   font-weight: bolder;
   height: 135px;
@@ -207,7 +207,7 @@ tr.ui-row-ltr td, .ui-jqgrid-htable th {
 
 .selected, .sorry-no-english, .extrasubheader, .globalwarning {
     background: none repeat scroll 0 0 #E8EBAF;
-    color: #A61B25;
+    color: #B40036;
 }
 
 .sorry-no-english {
@@ -658,17 +658,17 @@ button {
 
 #ma_v2_wrapper h1 {
 		font: bold 16px/24px "Trebuchet MS";
-		color: #A61B25;
+		color: #B40036;
 	}
 
 #ma_v2_wrapper h2 {
 	font: bold 14px/20px "Trebuchet MS";
-	color: #A61B25;
+	color: #B40036;
 }
 
 #ma_v2_wrapper h3 {
 	font: bold 14px/20px "Trebuchet MS";
-	color: #A61B25;
+	color: #B40036;
 }
 
 #ma_v2_wrapper table {
@@ -761,14 +761,14 @@ table td {
 }
 
 table a, table a span {
-	color: #339999;
+	color: #00818D;
 }
 
 table a visited, table a span {
-	color: #339999;
+	color: #00818D;
 }
 table a:hover{
-    color: #00CCCC;
+    color: #003A40;
 }
 
 
@@ -816,7 +816,7 @@ table.kz1s1 {
 		padding: 6px;
 		border-right: 1px solid #DDDDDD;
 		border-bottom: 1px solid #DDDDDD;
-		color: #003333;
+		color: #271A2B;
 	}
 
 	table.kz1s1 tr:nth-child(odd) td {
@@ -830,7 +830,7 @@ table.kz1s1 {
 	table.kz1s1 tr th {
 		background-color: #E8EBAF!important;
 		padding: 6px;
-		color: #003333!important;
+		color: #271A2B!important;
 
 	}
 
@@ -870,21 +870,21 @@ table.staff{
 	table.staff tr th:first-child {
 		background-color: #E8EBAF!important;
 		padding: 6px;
-		color: #003333!important;
+		color: #271A2B!important;
 		text-align: left;
 		width: 45%;
 	}
 	table.staff tr th:last-child {
 		background-color: #E8EBAF!important;
 		padding: 6px;
-		color: #003333!important;
+		color: #271A2B!important;
 		text-align: left;
 		width: 40%;
 	}
 	table.staff tr th {
 		background-color: #E8EBAF!important;
 		padding: 6px;
-		color: #003333!important;
+		color: #271A2B!important;
 		text-align: center;
 
 	}
@@ -923,7 +923,7 @@ table.standardoben{
 	table.standardoben tr:first-child td {
 		background-color: #E8EBAF!important;
 		padding: 6px;
-		color: #003333!important;
+		color: #271A2B!important;
 		text-align: left;
 		width: 45%;
 	}
@@ -956,7 +956,7 @@ table.standardobenlinks{
 	table.standardobenlinks tr:first-child td {
 		background-color: #E8EBAF!important;
 		padding: 6px;
-		color: #003333!important;
+		color: #271A2B!important;
 		text-align: left;
 		width: 45%;
 	}
@@ -964,7 +964,7 @@ table.standardobenlinks{
 	table.standardobenlinks tr td:first-child {
 		background-color: #E8EBAF!important;
 		padding: 6px;
-		color: #003333!important;
+		color: #271A2B!important;
 		text-align: left;
 		width: 45%;
 	}
@@ -999,7 +999,7 @@ table.standardobenlinksklein{
 	table.standardobenlinksklein tr:first-child td {
 		background-color: #E8EBAF!important;
 		padding: 6px;
-		color: #003333!important;
+		color: #271A2B!important;
 		text-align: left;
 		width: 45%;
 	}
@@ -1007,7 +1007,7 @@ table.standardobenlinksklein{
 	table.standardobenlinksklein tr td:first-child {
 		background-color: #E8EBAF!important;
 		padding: 6px;
-		color: #003333!important;
+		color: #271A2B!important;
 		text-align: left;
 		width: 45%;
 	}
@@ -1126,7 +1126,7 @@ table.standardobenlinksklein{
 
 #portal-header {
   background-color: #224444;
-  color: #339999;
+  color: #00818D;
   cursor: pointer;
   font-size: 96px;
   font-weight: bolder;

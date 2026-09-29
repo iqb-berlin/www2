@@ -98,7 +98,11 @@
       // apps.json is part of this repository, so its HTML is trusted content.
       desc.innerHTML = meta.description || '';
       document.getElementById('app-version').textContent = app.version ? 'Aktuelle Version: ' + app.version : '';
-      document.getElementById('app-published').textContent = app.published ? 'Veröffentlichung: ' + app.published : '';
+      // Original release dates belong to a specific version, not the import date.
+      var released = meta.releaseDates && meta.releaseDates[app.version];
+      document.getElementById('app-published').textContent = released
+        ? 'Veröffentlichung: ' + released
+        : (app.published ? 'Bereitgestellt am: ' + app.published : '');
       var btn = document.getElementById('btn-install');
       btn.addEventListener('click', function () { location.href = app.setupUrl; });
       details.hidden = false;

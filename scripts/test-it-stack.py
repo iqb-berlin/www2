@@ -37,7 +37,7 @@ with tempfile.TemporaryDirectory(prefix='.www2-smoke-', dir=repo) as tmp:
                 status,body,_=request('/institut/'+page+suffix)
                 assert status==200, (page,suffix,status)
                 assert b'<!--#' not in body and b'[an error occurred' not in body
-                assert b'id="page-footer"' in body and b'id="maincontent"' in body
+                assert b'id="page-footer"' not in body and b'id="maincontent"' in body
                 assert b'href="/institut/impressum"' in body
         print('PASS: four exported information pages, legacy URLs and SSI rendering',flush=True)
         assert json.loads(request('/it/api/pcs')[1])['status']=='unavailable'

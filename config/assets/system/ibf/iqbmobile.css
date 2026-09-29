@@ -5,7 +5,7 @@
 }
 /*//TEMP STAFF//*/
 .staff_container .heading{
-        background-color: #356666 !important;
+        background-color: #534856 !important;
         color: #fff !important;
         padding-left: 5px;
         padding-top: 5px;
@@ -16,7 +16,7 @@
     }
     .staff_container .staff{
         margin-bottom: 10px;
-        border-bottom: solid 1px #356666;
+        border-bottom: solid 1px #534856;
     }    
     .staff_container .staff_name{
         font-weight: bold;
@@ -43,7 +43,7 @@ position: sticky;*/
 top: 0;
 background-image: none;    
 background:#fff;
-/*border-bottom:solid 1px #003333;*/
+/*border-bottom:solid 1px #271A2B;*/
 background:  rgb(229,230,220); /*#fff;/* rgb(229,230,220);  ;/*003333;*/
 }
 #header-mobile{
@@ -86,7 +86,7 @@ height:50px;
 /*MENÜButton*/
 #btn_menu{
      background:transparent;
-     color:#336666;
+     color:#534856;
      border:none;
      position:relative;
      width: 40px;
@@ -107,7 +107,7 @@ height:50px;
       left: 15px;
       right: 0px;
       height: 3px;
-      background: #003333; /*#336666;*/
+      background: #271A2B; /*#534856;*/
      border-radius: 5px;
 }
 
@@ -118,7 +118,7 @@ height:50px;
       left: 0;
       width: 100%;
       height: 3px;
-      background-color:  #003333; /*#336666;*/
+      background-color:  #271A2B; /*#534856;*/
       content: "";
       border-radius: 5px;
 }
@@ -169,13 +169,13 @@ background: transparent;
 border-radius: 30px;
 height: 12px;
 width: 12px;
-border: 3px solid #003333 /* #fff; /*#336666;*/
+border: 3px solid #271A2B /* #fff; /*#534856;*/
 }
 .search_glass:after {
 content: "";
 height: 3px;
 width: 11px;
-background: #003333; /*#336666;*/
+background: #271A2B; /*#534856;*/
 position:absolute;
 top:14px;
 left:9px;
@@ -195,7 +195,7 @@ transform: rotate(45deg);
 
 #mlocation{
     font-size: larger;
-    background:#336666;
+    background:#534856;
     width: 100%;
     max-width: 100vw;
    overflow: hidden;
@@ -224,7 +224,7 @@ height:40vh;
     margin-right: auto;
     display: block;
     margin-bottom: 1px;
-    background:#003333;
+    background:#271A2B;
     display: block;
     margin-bottom: 0px;
     height: auto;
@@ -261,7 +261,7 @@ margin-top:55px;
 }
 #mobilemenu {
     font-size: larger;
-    background:#336666;
+    background:#534856;
     width: 100%;
     max-width: 100vw;
     overflow:hidden;
@@ -315,7 +315,7 @@ margin-top:55px;
     float: left;
      }        
 .first_li{
-    background:#003333;  /* #172d2b;   */
+    background:#271A2B;  /* #172d2b;   */
     display: block;
     margin-bottom: 0px;
     height: auto;
@@ -338,7 +338,7 @@ margin-top:55px;
     float: right;
     width: 20%;
     margin: 0px;
-    background:#003333; /* #172d2b;*/
+    background:#271A2B; /* #172d2b;*/
     color: #fff;
     border: none;
     padding: 0;
@@ -453,7 +453,7 @@ margin-left: -16px;
 
 
 #subnavigation-mobile{
-background: #336666;
+background: #534856;
 color: #fff;
 }
 #subnavigation-mobile ul.subnavi-mobile.lvl2 > li{
@@ -583,12 +583,12 @@ padding-bottom:15px;
 #searchmobile input.search{
  padding-left: 2%;
  font-size: larger;
- color: #336666;
+ color: #534856;
  height: 45px;
  width: 98%;
  
  border-radius: 5px;
- border: 1px solid #336666;
+ border: 1px solid #534856;
  background: #fff;
  display: block;
 }
@@ -758,7 +758,7 @@ overflow: hidden;
 	 padding-left: 5%;
 	padding-right: 5%;  
 	background-image: none;    
-	background: #336666;
+	background: #534856;
 	margin: 0;
 		
 	padding-top: 15px;    

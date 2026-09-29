@@ -3,7 +3,10 @@
     "id": "IQB-Kodieren",
     "title": "IQB-Kodieren",
     "description": "<p>Am IQB werden Antworten von Schülerinnen und Schülern aus verschiedenen Testungen auf ihre Richtigkeit hin beurteilt. Um diese Kodierung der Schülerantworten effizient zu gestalten, wurde vom EDV-Team diese Anwendung programmiert. Mit diesem Programm werden die beantworteten Testheftseiten jeder Schülerin und jedes Schülers angezeigt. Um einzelne Antworten als richtig oder falsch zu kodieren, wählt der Kodierer bzw. die Kodiererin aus einer Liste möglicher Codes aus. Weitere Informationen in&nbsp;<img src=\"/it/docs/pdfpic.gif\" alt=\"PDF\" /> <a title=\"IQB-Kodieren.pdf\" href=\"/it/docs/IQB-Kodieren.pdf\">diesem Dokument</a>.</p>",
-    "manual": "docs/IQB-Kodieren.pdf"
+    "manual": "docs/IQB-Kodieren.pdf",
+    "releaseDates": {
+      "4.3.0.3": "29.06.2026"
+    }
   },
   {
     "id": "IQB-ScanViewer",
@@ -34,6 +37,9 @@
   {
     "id": "itc-ToolBox",
     "title": "itc-ToolBox",
-    "description": "<p>Die Windows-Anwendung \"itc-ToolBox\" unterstützt die Erzeugung von Dateien für und die Verarbeitung von Dateien aus dem IQB-Testcenter. Sie finden ausführliche Anleitungen <a href=\"https://iqb-berlin.github.io/tba-info/Testcenter/toolbox/\" target=\"_blank\" rel=\"noopener\">auf diesen Seiten</a>. Der Quellcode ist hier veröffentlicht: <a href=\"https://github.com/iqb-berlin/itc-toolbox\" target=\"_blank\" rel=\"noopener\">GitHub</a>.</p>"
+    "description": "<p>Die Windows-Anwendung \"itc-ToolBox\" unterstützt die Erzeugung von Dateien für und die Verarbeitung von Dateien aus dem IQB-Testcenter. Sie finden ausführliche Anleitungen <a href=\"https://iqb-berlin.github.io/tba-info/Testcenter/toolbox/\" target=\"_blank\" rel=\"noopener\">auf diesen Seiten</a>. Der Quellcode ist hier veröffentlicht: <a href=\"https://github.com/iqb-berlin/itc-toolbox\" target=\"_blank\" rel=\"noopener\">GitHub</a>.</p>",
+    "releaseDates": {
+      "3.3.0.2": "02.09.2026"
+    }
   }
 ]

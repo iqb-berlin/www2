@@ -13,7 +13,8 @@ include $(WWW2_BASE_DIR)/.env.www2
 # disables printing the recipe of a make target before executing it
 .SILENT: prod-images-clean
 
-# Pull newest images, create and start docker containers
+# Recreate containers so nginx regenerates its config and remounts replaced templates.
+# Pull and build first; a failed build leaves the existing containers running.
 www2-up:
 	@if ! test $(shell docker network ls -q --filter name=app-net);\
 		then docker network create app-net;\
@@ -34,7 +35,7 @@ www2-up:
 			--env-file $(WWW2_BASE_DIR)/.env.www2\
 			--file $(WWW2_BASE_DIR)/docker-compose.www2.yaml\
 			--file $(WWW2_BASE_DIR)/docker-compose.www2.prod.yaml\
-		up -d --no-build --pull never
+		up -d --no-build --pull never --force-recreate
 
 # Stop and remove docker containers
 www2-down:

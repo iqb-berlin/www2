@@ -1,0 +1,35 @@
+/* Palette from homepage/frontend/Build/Scss/Base/_colors.scss. */
+:root {
+  --iqb-brand: #B40036;
+  --iqb-text: #271A2B;
+  --iqb-action: #00818D;
+  --iqb-subtle: #F4F2F2;
+}
+body { color: var(--iqb-text); background: var(--iqb-subtle); }
+#header, .startseite #main { background-image: none; }
+a, a:visited { color: var(--iqb-brand); }
+a:hover, a:focus { color: var(--iqb-brand); text-decoration: underline; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--iqb-action); outline-offset: 3px; }
+h1, h2, h3, h4 { color: var(--iqb-brand); }
+#root-contentstatic {
+  background: var(--iqb-subtle);
+  box-shadow: none;
+  border-top: 4px solid var(--iqb-brand);
+  padding-top: 20px;
+  line-height: 1.6;
+}
+#root-contentstatic .portal-link, #maincontent #btn-install {
+  display: inline-block;
+  background: var(--iqb-action);
+  color: white;
+  border: 0;
+  border-radius: 2px;
+  padding: 12px 20px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+#root-contentstatic .portal-link:hover, #maincontent #btn-install:hover {
+  background: #003A40;
+  color: white;
+}
+#main { padding-bottom: 32px; }

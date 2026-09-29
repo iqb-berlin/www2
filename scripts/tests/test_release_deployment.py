@@ -50,7 +50,7 @@ if 'build' in args and os.environ.get('FAIL_BUILD')=='1':sys.exit(9)
         calls = [x for x in calls if x[0] == 'compose']
         operations = [next(x[i:] for i in range(len(x)) if x[i] in ('pull','build','up','down')) for x in calls]
         expected = [['pull','--ignore-buildable'], ['build','it-api']]
-        if not failed: expected.append(['up','-d','--no-build','--pull','never'])
+        if not failed: expected.append(['up','-d','--no-build','--pull','never','--force-recreate'])
         self.assertEqual(operations, expected)
         for call in calls:
             self.assertTrue(any(x.endswith('docker-compose.www2.prod.yaml') for x in call))

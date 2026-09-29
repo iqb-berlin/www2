@@ -545,7 +545,7 @@ application_reload() {
         --env-file "${APP_DIR}/.env.${APP_NAME}" \
         --file "${APP_DIR}/docker-compose.${APP_NAME}.yaml" \
         --file "${APP_DIR}/docker-compose.${APP_NAME}.prod.yaml" \
-      up -d --no-build --pull never || return 1
+      up -d --no-build --pull never --force-recreate || return 1
   else
     printf "'%s' update script finished.\n\n" "${APP_NAME}"
 
@@ -575,7 +575,7 @@ application_restart() {
         --env-file "${APP_DIR}/.env.${APP_NAME}" \
         --file "${APP_DIR}/docker-compose.${APP_NAME}.yaml" \
         --file "${APP_DIR}/docker-compose.${APP_NAME}.prod.yaml" \
-      up -d --no-build --pull never || return 1
+      up -d --no-build --pull never --force-recreate || return 1
   else
     printf "'%s' update script finished.\n\n" "${APP_NAME}"
 
