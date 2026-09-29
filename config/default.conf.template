@@ -28,7 +28,7 @@ server {
     #access_log  /var/log/nginx/host.access.log  main;
 
     # landing-page.html references its CSS/JS/images as https://local-assets/...
-    # so they stay same-origin even though <base> points at the live domain;
+    # so they stay same-origin on both the staging IP and production hostname;
     # rewrite that placeholder to whatever host/scheme the request actually came in on.
     sub_filter 'https://local-assets/' '$asset_scheme://$http_host/';
     sub_filter_once off;

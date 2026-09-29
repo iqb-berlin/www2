@@ -13,12 +13,11 @@ list of available PCs), running behind [Traefik](https://traefik.io/).
   IQB Windows programs (served from an external `downloads/` directory) and a
   tiny Node.js API container (`api/`, service `it-api`) that nginx proxies
   under `/it/api/`. See [IT section](#it-section-it) below.
-- The page's `<base href>` still points at the live IQB domain, so untouched
-  links (navigation, footer, forms, ...) keep working against the real site.
-  Its CSS/JS/image references, however, use a `https://local-assets/...`
-  placeholder that nginx rewrites at request time (via `sub_filter`) to
-  whatever host/scheme the request actually came in on — so those assets are
-  always served locally, in every environment, without hardcoding a domain.
+- The landing page uses `<base href="/">`; the logo, Startseite links and
+  software overview stay on the current deployment host. Links to unmigrated
+  legacy pages remain absolute. CSS/JS/image references use a
+  `https://local-assets/...` placeholder that nginx rewrites at request time
+  (via `sub_filter`) to the request host/scheme.
 - `config/default.conf.template` is rendered into the live nginx config by
   the image's `envsubst` entrypoint.
 
