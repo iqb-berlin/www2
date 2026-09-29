@@ -32,6 +32,14 @@ with tempfile.TemporaryDirectory(prefix='.www2-smoke-', dir=repo) as tmp:
             except (OSError,urllib.error.URLError):pass
             time.sleep(.25)
         else:raise AssertionError('stack not healthy')
+        for page in ['impressum','accessibility','datenschutzerklaerung','whistle_blower']:
+            for suffix in ['', '/', '/index.html']:
+                status,body,_=request('/institut/'+page+suffix)
+                assert status==200, (page,suffix,status)
+                assert b'<!--#' not in body and b'[an error occurred' not in body
+                assert b'id="page-footer"' in body and b'id="maincontent"' in body
+                assert b'href="/institut/impressum"' in body
+        print('PASS: four exported information pages, legacy URLs and SSI rendering',flush=True)
         assert json.loads(request('/it/api/pcs')[1])['status']=='unavailable'
         headers={'Authorization':'Bearer smoke-pc-token-123456789','Content-Type':'application/json','X-Forwarded-For':'198.51.100.10','X-Real-IP':'198.51.100.10'}
         assert request('/it/api/pcs',b'[]',headers)[0]==403, 'direct client must not spoof allowed source'

@@ -302,3 +302,17 @@ file sharing. It checks fresh/stale reports, forwarded-address spoof rejection,
 a trusted proxy request, ZIP publication, legacy download URLs, MIME types,
 retained payloads, and hidden-file protection, then removes the test containers
 and data. It does not alter the configured production downloads directory.
+
+## Exported information pages
+
+The German texts from `impressum.zexp`, `accessibility.zexp`,
+`datenschutzerklaerung.zexp` and `whistle_blower.zexp` are stored under
+`config/assets/institut/` and served at their original `/institut/<name>` URLs.
+Navigation and footer links use this deployment's host. Nginx renders their
+shared header and footer through SSI, like the IT pages.
+
+The content was copied from the supplied Zope exports on 2026-09-29. Relative
+hyperlinks were resolved and the website scope updated to `www2.iqb.hu-berlin.de`.
+The accessibility statement is dated 29.09.2026; its inherited accessibility
+review date remains 4.4.2022. Updating the statement does not constitute a new
+accessibility audit. The remaining content is preserved from the exports.

@@ -143,6 +143,13 @@ server {
         rewrite ^ /it/dl/$app/$rest last;
     }
 
+    # Exported information pages retain their original Zope URLs.
+    location ~ ^/institut/(?<info_page>impressum|accessibility|datenschutzerklaerung|whistle_blower)(?:/index\.html|/)?$ {
+        root /usr/share/nginx/html;
+        ssi on;
+        try_files /institut/$info_page/index.html =404;
+    }
+
     # ------------------------------------------------------------------------
     # Landing page
     # ------------------------------------------------------------------------
