@@ -280,7 +280,7 @@ download_dir() {
   declare -i strip_components=$(( $(printf "%s" "${remote_dir}" | tr -cd '/' | wc -c) + 2 ))
 
   if curl --silent --fail --location "${archive_url}" \
-      | tar -xz -C "${local_dir}" --strip-components="${strip_components}" "${APP_NAME}-${TARGET_VERSION}/${remote_dir}"; then
+      | tar -xz -C "${local_dir}" --strip-components="${strip_components}" --wildcards "*/${remote_dir}"; then
     printf -- "- Directory '%s' successfully downloaded.\n" "${local_dir}"
   else
     printf -- "- Directory '%s' download failed.\n\n" "${local_dir}"
@@ -308,38 +308,39 @@ download_files() {
 
 
 customize_settings() {
-  # Activate environment file
-  cp ".env.${APP_NAME}.template" ".env.${APP_NAME}"
+  # Never replace existing production configuration when installing into a nonempty directory.
+  if [ ! -f ".env.${APP_NAME}" ]; then
+    cp ".env.${APP_NAME}.template" ".env.${APP_NAME}"
 
-  # Set Edge Router Directory
-  sed -i.bak "s|^TRAEFIK_DIR.*|TRAEFIK_DIR=${TRAEFIK_DIR}|" ".env.${APP_NAME}" && rm ".env.${APP_NAME}.bak"
+    chmod 600 ".env.${APP_NAME}"
 
-  # Load defaults
-  # shellcheck source=.env.www2
-  source ".env.${APP_NAME}"
+    # Set Edge Router Directory
+    sed -i.bak "s|^TRAEFIK_DIR.*|TRAEFIK_DIR=${TRAEFIK_DIR}|" ".env.${APP_NAME}" && rm ".env.${APP_NAME}.bak"
 
-  # Setup environment variables
-  ## Version
-  sed -i.bak "s|^TAG=.*|TAG=${TARGET_VERSION}|" ".env.${APP_NAME}" && rm ".env.${APP_NAME}.bak"
+    # Load defaults
+    # shellcheck source=.env.www2
+    source ".env.${APP_NAME}"
 
-  ## Server & TLS Certificate Resolver
-  declare server_name
-  declare resolver
-  if [ -n "${TRAEFIK_DIR}" ]; then
-    server_name=$(sed -n 's|^SERVER_NAME=||p' "${TRAEFIK_DIR}/.env.traefik" | head -n1)
-    resolver=$(sed -n 's|^TLS_CERTIFICATE_RESOLVER=||p' "${TRAEFIK_DIR}/.env.traefik" | head -n1)
-  else
-    read -p "SERVER_NAME: " -er -i "${server_name}" server_name
+    ## Server & TLS Certificate Resolver
+    declare server_name
+    declare resolver
+    if [ -n "${TRAEFIK_DIR}" ]; then
+      server_name=$(sed -n 's|^SERVER_NAME=||p' "${TRAEFIK_DIR}/.env.traefik" | head -n1)
+      resolver=$(sed -n 's|^TLS_CERTIFICATE_RESOLVER=||p' "${TRAEFIK_DIR}/.env.traefik" | head -n1)
+    else
+      read -p "SERVER_NAME: " -er -i "${server_name}" server_name
+    fi
+    sed -i.bak "s|^SERVER_NAME=.*|SERVER_NAME=${server_name}|" ".env.${APP_NAME}" && rm ".env.${APP_NAME}.bak"
+    sed -i.bak "s|TLS_CERTIFICATE_RESOLVER.*|TLS_CERTIFICATE_RESOLVER=${resolver}|" ".env.${APP_NAME}" &&
+      rm ".env.${APP_NAME}.bak"
   fi
-  sed -i.bak "s|^SERVER_NAME=.*|SERVER_NAME=${server_name}|" ".env.${APP_NAME}" && rm ".env.${APP_NAME}.bak"
-  sed -i.bak "s|TLS_CERTIFICATE_RESOLVER.*|TLS_CERTIFICATE_RESOLVER=${resolver}|" ".env.${APP_NAME}" &&
-    rm ".env.${APP_NAME}.bak"
 
-  # Setup makefiles
-  sed -i.bak "s|^${MAKE_BASE_DIR_NAME} :=.*|${MAKE_BASE_DIR_NAME} := \\${APP_DIR}|" \
-    "scripts/make/${APP_NAME}.mk" && rm "scripts/make/${APP_NAME}.mk.bak"
-  sed -i.bak "s|scripts/update.sh|scripts/update_${APP_NAME}.sh|" \
-    "scripts/make/${APP_NAME}.mk" && rm "scripts/make/${APP_NAME}.mk.bak"
+  if grep -q '^TAG=' ".env.${APP_NAME}"; then
+    sed -i.bak "s|^TAG=.*|TAG=${TARGET_VERSION}|" ".env.${APP_NAME}" && rm ".env.${APP_NAME}.bak"
+  else
+    printf '\nTAG=%s\n' "${TARGET_VERSION}" >>".env.${APP_NAME}"
+  fi
+
 
   if [ -n "${TRAEFIK_DIR}" ] && [ "${TRAEFIK_DIR}" != "${APP_DIR}" ]; then
     cp "${TRAEFIK_DIR}/Makefile" Makefile
@@ -365,12 +366,17 @@ application_start() {
         --env-file ".env.${APP_NAME}" \
         --file "docker-compose.${APP_NAME}.yaml" \
         --file "docker-compose.${APP_NAME}.prod.yaml" \
-      pull
+      pull --ignore-buildable || return 1
     docker compose \
         --env-file ".env.${APP_NAME}" \
         --file "docker-compose.${APP_NAME}.yaml" \
         --file "docker-compose.${APP_NAME}.prod.yaml" \
-      up -d
+      build it-api || return 1
+    docker compose \
+        --env-file ".env.${APP_NAME}" \
+        --file "docker-compose.${APP_NAME}.yaml" \
+        --file "docker-compose.${APP_NAME}.prod.yaml" \
+      up -d --no-build --pull never || return 1
   else
     printf "'%s' installation script finished.\n" "${APP_NAME}"
     exit 0
@@ -415,4 +421,6 @@ main() {
   fi
 }
 
-main
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+  main
+fi

@@ -1,4 +1,4 @@
-WWW2_BASE_DIR := $(shell git rev-parse --show-toplevel)
+WWW2_BASE_DIR := $(abspath $(dir $(lastword $(MAKEFILE_LIST)))/../..)
 
 include $(WWW2_BASE_DIR)/.env.www2
 
@@ -29,7 +29,12 @@ www2-up:
 			--env-file $(WWW2_BASE_DIR)/.env.www2\
 			--file $(WWW2_BASE_DIR)/docker-compose.www2.yaml\
 			--file $(WWW2_BASE_DIR)/docker-compose.www2.prod.yaml\
-		up -d --build
+		build it-api
+	docker compose\
+			--env-file $(WWW2_BASE_DIR)/.env.www2\
+			--file $(WWW2_BASE_DIR)/docker-compose.www2.yaml\
+			--file $(WWW2_BASE_DIR)/docker-compose.www2.prod.yaml\
+		up -d --no-build --pull never
 
 # Stop and remove docker containers
 www2-down:
@@ -91,4 +96,4 @@ www2-images-clean: .EXPORT_ALL_VARIABLES
 
 # Start application update procedure
 www2-update:
-	bash $(WWW2_BASE_DIR)/scripts/update.sh -s $(TAG)
+	bash $(firstword $(wildcard $(WWW2_BASE_DIR)/scripts/update_www2.sh $(WWW2_BASE_DIR)/scripts/update.sh)) -s $(TAG)

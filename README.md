@@ -71,6 +71,45 @@ make www2-logs    # follow logs
 make www2-config  # print the resolved compose config
 ```
 
+### Release installations (no Git checkout)
+
+The Makefiles resolve the installation directory from their own location, so
+`make www2-up` also works in an unpacked release or an installation created by
+`scripts/install.sh`. The release installer names its production Make fragment
+`scripts/make/www2.mk` and its updater `scripts/update_www2.sh`; both the release
+and repository updater names are supported.
+
+All production startup paths pull only prebuilt services, build `it-api`
+locally, then recreate containers using those prepared images. The API image
+does not need to be published to a registry. Docker needs outbound access to
+obtain the build base image and npm dependencies. A failed pull/build prevents
+activation; updates no longer stop existing containers before building.
+
+For a prerelease, select its exact published tag in the updater's version
+prompt (the GitHub `latest` endpoint normally excludes prereleases). Use the
+repository's existing version convention, e.g. `0.2.0-rc.1`. The updater's `-t`
+option is for resuming an update, not bypassing the initial backup workflow.
+
+The updater retains `.env.www2` and updates only its `TAG` entry. The installer
+also preserves an existing `.env.www2` when installing into a nonempty directory.
+A changed environment template still requires reviewing the new settings:
+configure `PC_UPDATE_TOKEN`, `UPLOAD_TOKENS`, `DOWNLOADS_DIR`, and
+`TRUSTED_PROXY_CIDR` before activation. ClickOnce payloads are not in a release;
+transfer them separately and ensure the API can write to the downloads directory.
+Keep separate backups of downloads and the API state volume.
+
+When configuration review is required, the updater leaves containers running
+and asks you to run `make www2-up` after review. Release files are nevertheless
+updated in place, including bind-mounted assets; this is not an atomic whole-site
+upgrade. Schedule the update accordingly and retain the release backup.
+
+Offline deployment regression tests (no Docker daemon, network, Git checkout,
+or real environment files required):
+
+```sh
+python3 -B -m unittest discover -s scripts/tests -p 'test_release_deployment.py' -v
+```
+
 ### Security scanning
 
 ```sh

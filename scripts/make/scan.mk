@@ -1,4 +1,4 @@
-WWW2_BASE_DIR := $(shell git rev-parse --show-toplevel)
+WWW2_BASE_DIR := $(abspath $(dir $(lastword $(MAKEFILE_LIST)))/../..)
 NGINX_IMAGE := $(shell docker compose --env-file $(WWW2_BASE_DIR)/.env.dev config --images | grep nginx)
 IT_API_IMAGE := $(shell docker compose --env-file $(WWW2_BASE_DIR)/.env.dev config --images | grep www2-it-api)
 

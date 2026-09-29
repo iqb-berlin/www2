@@ -1,4 +1,4 @@
-WWW2_BASE_DIR := $(shell git rev-parse --show-toplevel)
+WWW2_BASE_DIR := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
 MK_FILE_DIR := $(WWW2_BASE_DIR)/scripts/make
 
 dev-registry-login:

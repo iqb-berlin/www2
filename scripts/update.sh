@@ -347,7 +347,7 @@ download_dir() {
   declare -i strip_components=$(( $(printf "%s" "${remote_dir}" | tr -cd '/' | wc -c) + 2 ))
 
   if curl --silent --fail --location "${archive_url}" \
-      | tar -xz -C "${local_dir}" --strip-components="${strip_components}" "${APP_NAME}-${TARGET_VERSION}/${remote_dir}"; then
+      | tar -xz -C "${local_dir}" --strip-components="${strip_components}" --wildcards "*/${remote_dir}"; then
     printf -- "- Directory '%s' successfully downloaded.\n" "${local_dir}"
   else
     printf -- "- Directory '%s' download failed.\n\n" "${local_dir}"
@@ -408,7 +408,6 @@ get_modified_file() {
 
       if [ "${file_type}" == "conf-file" ]; then
         mv "${APP_DIR}/${source_file}" "${APP_DIR}/${source_file}.old" 2>/dev/null
-        cp "${APP_DIR}/${current_config_file}" "${APP_DIR}/${current_config_file}.old"
         printf -- "- The current configuration template file '%s' is outdated.\n" "${source_file}"
         printf "  A version %s configuration template file will be downloaded now ...\n" "${TARGET_VERSION}"
         printf "  Please compare your current configuration file with the new template file and update it, "
@@ -474,13 +473,12 @@ update_makefile() {
 
 customize_settings() {
   # write chosen version tag to env file
-  sed -i.bak "s|TAG.*|TAG=${TARGET_VERSION}|" "${APP_DIR}/.env.${APP_NAME}" && rm "${APP_DIR}/.env.${APP_NAME}.bak"
+  if grep -q '^TAG=' "${APP_DIR}/.env.${APP_NAME}"; then
+    sed -i.bak "s|^TAG=.*|TAG=${TARGET_VERSION}|" "${APP_DIR}/.env.${APP_NAME}" && rm "${APP_DIR}/.env.${APP_NAME}.bak"
+  else
+    printf '\nTAG=%s\n' "${TARGET_VERSION}" >>"${APP_DIR}/.env.${APP_NAME}"
+  fi
 
-  # Setup makefiles
-  sed -i.bak "s|${MAKE_BASE_DIR_NAME} :=.*|${MAKE_BASE_DIR_NAME} := \\$(pwd)|" \
-    "${APP_DIR}/scripts/make/${APP_NAME}.mk" && rm "${APP_DIR}/scripts/make/${APP_NAME}.mk.bak"
-  sed -i.bak "s|scripts/update.sh|scripts/update_${APP_NAME}.sh|" "${APP_DIR}/scripts/make/${APP_NAME}.mk" &&
-    rm "${APP_DIR}/scripts/make/${APP_NAME}.mk.bak"
   update_makefile
 
   # Update environment variables
@@ -506,11 +504,7 @@ finalize_update() {
     fi
     printf "Summary done.\n\n\n"
 
-    if [[ $(docker compose --project-name "${PWD##*/}" ps -q) ]]; then
-      printf "'%s' application will now shut down ...\n" "${APP_NAME}"
-      docker compose --project-name "${PWD##*/}" down
-      printf "\n"
-    fi
+    printf "Existing containers have not been stopped. Review settings before recreating them.\n\n"
 
     printf "When your files are checked for modification, you could restart the application with "
     printf "'make %s-up' at the command line to put the update into effect.\n\n" "${APP_NAME}"
@@ -525,7 +519,7 @@ finalize_update() {
     printf "Summary done.\n\n\n"
 
     # application_reload --> Seems not to work with liquibase containers!
-    application_restart
+    application_restart || exit 1
   fi
 }
 
@@ -541,12 +535,17 @@ application_reload() {
         --env-file "${APP_DIR}/.env.${APP_NAME}" \
         --file "${APP_DIR}/docker-compose.${APP_NAME}.yaml" \
         --file "${APP_DIR}/docker-compose.${APP_NAME}.prod.yaml" \
-      pull
+      pull --ignore-buildable || return 1
     docker compose \
         --env-file "${APP_DIR}/.env.${APP_NAME}" \
         --file "${APP_DIR}/docker-compose.${APP_NAME}.yaml" \
         --file "${APP_DIR}/docker-compose.${APP_NAME}.prod.yaml" \
-      up -d
+      build it-api || return 1
+    docker compose \
+        --env-file "${APP_DIR}/.env.${APP_NAME}" \
+        --file "${APP_DIR}/docker-compose.${APP_NAME}.yaml" \
+        --file "${APP_DIR}/docker-compose.${APP_NAME}.prod.yaml" \
+      up -d --no-build --pull never || return 1
   else
     printf "'%s' update script finished.\n\n" "${APP_NAME}"
 
@@ -559,11 +558,6 @@ application_restart() {
   read -p "Do you want to restart '${APP_NAME}' now? [Y/n] " -er -n 1 restart
 
   if [[ ! ${restart} =~ [nN] ]]; then
-    docker compose \
-        --env-file "${APP_DIR}/.env.${APP_NAME}" \
-        --file "${APP_DIR}/docker-compose.${APP_NAME}.yaml" \
-        --file "${APP_DIR}/docker-compose.${APP_NAME}.prod.yaml" \
-      down
     if ! test "$(docker network ls -q --filter name=app-net)"; then
       docker network create app-net
     fi
@@ -571,12 +565,17 @@ application_restart() {
         --env-file "${APP_DIR}/.env.${APP_NAME}" \
         --file "${APP_DIR}/docker-compose.${APP_NAME}.yaml" \
         --file "${APP_DIR}/docker-compose.${APP_NAME}.prod.yaml" \
-      pull
+      pull --ignore-buildable || return 1
     docker compose \
         --env-file "${APP_DIR}/.env.${APP_NAME}" \
         --file "${APP_DIR}/docker-compose.${APP_NAME}.yaml" \
         --file "${APP_DIR}/docker-compose.${APP_NAME}.prod.yaml" \
-      up -d
+      build it-api || return 1
+    docker compose \
+        --env-file "${APP_DIR}/.env.${APP_NAME}" \
+        --file "${APP_DIR}/docker-compose.${APP_NAME}.yaml" \
+        --file "${APP_DIR}/docker-compose.${APP_NAME}.prod.yaml" \
+      up -d --no-build --pull never || return 1
   else
     printf "'%s' update script finished.\n\n" "${APP_NAME}"
 
@@ -769,6 +768,7 @@ display_help() {
   exit 0
 }
 
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
 while getopts s:t:h UPDATE_OPTION; do
   case "${UPDATE_OPTION}" in
   s)
@@ -804,3 +804,4 @@ if [ -z "${SOURCE_VERSION}" ]; then
 fi
 
 main
+fi

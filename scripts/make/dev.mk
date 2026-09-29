@@ -1,4 +1,4 @@
-WWW2_BASE_DIR := $(shell git rev-parse --show-toplevel)
+WWW2_BASE_DIR := $(abspath $(dir $(lastword $(MAKEFILE_LIST)))/../..)
 
 include $(WWW2_BASE_DIR)/.env.dev
 
